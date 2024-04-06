@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import "./navbar.css"
 import { logoutUser } from '../../controllers/auth';
-import { getUser } from  '../../controllers/auth';
-const Navbar = ({authenticated, setAuthenticated}) => {
+import { getUser } from '../../controllers/auth';
+const Navbar = ({ authenticated, setAuthenticated }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-    
+
     let user = getUser();
     console.log(user);
     return (
@@ -25,9 +25,14 @@ const Navbar = ({authenticated, setAuthenticated}) => {
             </div>
             <ul className={menuOpen ? 'open' : ''}>
                 {authenticated ? (    //logged in view
-                    <li>
-                        <NavLink onClick={() => logoutUser(setAuthenticated)}>Logout</NavLink>
-                    </li>
+                    <>
+                        <li>
+                            <NavLink onClick={() => logoutUser(setAuthenticated)}>Logout</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/create/car">Post Car</NavLink>
+                        </li>
+                    </>
                 ) : (  //no user view
                     <>
                         <li>
@@ -38,7 +43,7 @@ const Navbar = ({authenticated, setAuthenticated}) => {
                         </li>
                     </>
                 )}
-                
+
             </ul>
         </nav>
     )
