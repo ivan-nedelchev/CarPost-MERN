@@ -1,3 +1,5 @@
+import { get } from "../utils/api"
+
 const saveUser = (userInfo) => {
     localStorage.setItem('user', JSON.stringify(userInfo))
 }
@@ -7,8 +9,16 @@ const getUser = () => {
 const deleteUser = () => {
     localStorage.removeItem('user')
 }
+
+const logoutUser = async (setAuthenticated) => {
+    console.log('logging out...');
+    await get('/logout');
+    deleteUser();
+    setAuthenticated(false);
+}
 export {
     saveUser,
     getUser,
     deleteUser,
+    logoutUser  
 }

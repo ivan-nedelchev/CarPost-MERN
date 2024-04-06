@@ -8,7 +8,7 @@ export async function logoutController(req, res) {
             console.log('clearing cookie');
             res
                 .clearCookie('connect.sid', { path: '/', domain: 'localhost' })
-                .send()
+                .sendStatus(204)
         }
     });
 }

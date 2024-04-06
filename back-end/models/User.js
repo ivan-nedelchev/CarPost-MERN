@@ -33,10 +33,10 @@ userSchema.index(
 //     }
 //     next();
 // });
-userSchema.methods.comparePassword = async function (password) {
-    const hashedPassword = this.hashedPassword;
-    const comparedPasswords = await comparePassword(password, hashedPassword);
-    return comparedPasswords;
-}
+// userSchema.methods.comparePassword = async function (password) {
+//     const hashedPassword = this.hashedPassword;
+//     const comparedPasswords = bcrypt.compareSync(password, user.password)
+//     return comparedPasswords;
+// }
 const User = model('User', userSchema);
 export default User;

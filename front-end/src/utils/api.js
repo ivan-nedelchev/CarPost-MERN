@@ -17,9 +17,10 @@ async function request(method, path, data) {
         options.credentials = 'include'
         response = await fetch(url + path, options);
     }
-    if (response.status != "204") {
+    if (response.status != 204 ) {
         return response.json()
     }
+    return response
 }
 
 let get = (path) => request("GET", path);

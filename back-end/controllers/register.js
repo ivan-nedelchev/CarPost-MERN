@@ -3,10 +3,9 @@ import bcrypt from 'bcrypt';
 
 export async function registerController(req, res) {
     const { username, password } = req.body;
-    const bcryptSalt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(password, bcryptSalt);
+
     try {
-        const user = await auth.register(username, hashedPassword);
+        const user = await auth.register(username, password);
         if (user == null) {
             throw new Error('Username already exists');
         } 
