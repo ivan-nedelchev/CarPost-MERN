@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { get } from '../utils/api'
+import CarList from './components/CarList';
 
 const Home = () => {
+    const [cars, setCars] = useState([])
+    useEffect(() => {
+        let getCars = async () => {
+            let carsArray = await get('/cars')
+
+            setCars([...carsArray])
+
+
+        }
+        getCars()
+    }, []);
+
     return (
         <>
-            <div>Home</div>
-            <div>HELLO GOSHO</div>
+            
+            <CarList cars={cars} />
         </>
     )
 }

@@ -1,0 +1,29 @@
+ul {
+   list-style: none;
+}
+.carImage {
+    width: 11em;
+    display: block;
+    margin: auto
+}
+.logo,
+.car {
+    width: 12em;
+    border-radius: 6px;
+    margin: 5px     ;
+}
+.cars {
+    justify-content: center;
+    display: flex;
+}
+.car {
+    border:1px solid #000000;
+    border-radius: 5px;
+    display: inline-block; 
+    height: 40vh;
+    
+}
+.container {
+    position: relative;
+
+}

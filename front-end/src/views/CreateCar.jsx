@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import './CreateCar.css'
 import { post } from '../utils/api';
+import { useNavigate } from 'react-router-dom';
 let path = '/create/car';
 
 const CreateCar = () => {
+    const navigate = useNavigate();
     const [carName, setCarName] = useState('')
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
@@ -11,6 +13,9 @@ const CreateCar = () => {
     const createCar = async (ev) => {
         ev.preventDefault()
         let carObject = await post(path, {name : carName, description, image, price})
+        if(carObject) {
+            navigate('/')
+        }
     }
     return (
         <>

@@ -7,7 +7,6 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     let user = getUser();
-    console.log(user);
     return (
         <nav>
             <Link to="/" className='title'>
@@ -27,10 +26,10 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
                 {authenticated ? (    //logged in view
                     <>
                         <li>
-                            <NavLink onClick={() => logoutUser(setAuthenticated)}>Logout</NavLink>
+                            <NavLink to="/create/car">Post Car</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/create/car">Post Car</NavLink>
+                            <NavLink onClick={() => logoutUser(setAuthenticated)}>Logout</NavLink>
                         </li>
                     </>
                 ) : (  //no user view

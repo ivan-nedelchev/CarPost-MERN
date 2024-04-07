@@ -2,7 +2,6 @@ import Car from "../models/Car.js";
 import User from "../models/User.js";
 
 export async function createNewCar(newCar, requesterId) {
-    console.log(newCar, requesterId);
     const car = new Car(newCar);
     const user = await User.findById(requesterId);
     if (user == null) {
@@ -13,4 +12,9 @@ export async function createNewCar(newCar, requesterId) {
         car.save(),
         user.save()
     ]);
+}
+export async function listCars(query) {
+    const filterCriteria = { isDeleted: false };
+    const cars = await Car.find(filterCriteria);
+    return cars
 }
