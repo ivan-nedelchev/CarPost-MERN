@@ -7,17 +7,12 @@ const Home = () => {
     useEffect(() => {
         let getCars = async () => {
             let carsArray = await get('/cars')
-
             setCars([...carsArray])
-
-
         }
         getCars()
     }, []);
-
     return (
         <>
-            
             <CarList cars={cars} />
         </>
     )

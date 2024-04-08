@@ -1,0 +1,44 @@
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { get } from '../utils/api';
+
+const Details = () => {
+    const { carId } = useParams();
+    const [car, setCar] = useState()
+    useEffect(() => {
+        let getCar = async () => {
+            let carDetails = await get(`/cars/${carId}`)
+            setCar({ ...carDetails })
+        }
+        getCar()
+    }, []);
+    function handleDelete(ev, carId) {
+        ev.preventDefault()
+        get(`/cars/delete/${carId}`)
+    }
+    let user = JSON.parse(localStorage.getItem('user'))
+    let userId = user ? user.id : null;
+    return (
+        <div>
+            {car ?
+                <div className="car">
+                    <img className='carImage' src={car.image} alt="Car Image"></img>
+                    <div className="container">
+                        <h4><b>Name: {car.name}</b></h4>
+                        <p>Description: {car.description}</p>
+                        <p>Price: {car.price}</p>
+                        {car.owner == userId
+                            &&
+                            <button onClick={(ev) => handleDelete(ev, car._id)} >Delete</button>
+                        }
+
+                    </div>
+                </div>
+                :
+                <h1>Loading car details</h1>
+            }
+        </div>
+    )
+}
+
+export default Details

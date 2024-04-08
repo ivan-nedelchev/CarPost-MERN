@@ -1,4 +1,4 @@
-import { createNewCar } from "../services/car.js";
+import { createNewCar} from "../services/car.js";
 
 export async function createCar(req, res) {
     let user = JSON.parse(req.session.user);

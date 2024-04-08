@@ -18,3 +18,30 @@ export async function listCars(query) {
     const cars = await Car.find(filterCriteria);
     return cars
 }
+export async function getCarById(carId) {
+    const car = await Car
+        .findById(carId)
+        .where({ isDeleted: false })
+    return car 
+}
+export async function deleteCarById(carId, requesterId) {
+    const [car, user] = await Promise.all([
+        await Car.findByIdAndUpdate(carId, { isDeleted: true }),
+        await User.findById(requesterId)
+    ]);
+    if (car == null || user == null) {
+        return null;
+    }
+    user.posts
+        .map(p => p.toString())
+        .forEach((ci, i) => {
+            if (ci.includes(carId)) {
+                user.posts.splice(i, 1);
+                return;
+            }
+        });
+    return await Promise.all([
+        await car.save(),
+        await user.save()
+    ]);
+}
