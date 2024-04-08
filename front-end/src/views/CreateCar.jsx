@@ -20,7 +20,7 @@ const CreateCar = () => {
     return (
         <>
             <div className='car-form'>
-                <h3>Post a car</h3>
+                <h1>Post a car</h1>
                 <form onSubmit={createCar} action="/create/car" method="post">
                     <label htmlFor="name">Name:</label>
                     <input
