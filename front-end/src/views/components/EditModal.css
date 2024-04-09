@@ -1,0 +1,10 @@
+form {
+    background-color: rgb(84, 84, 158);
+}
+.editForm{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
