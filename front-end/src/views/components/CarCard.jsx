@@ -1,15 +1,12 @@
 import React from 'react'
-let path = '/details/';
-
 import { useNavigate } from 'react-router-dom'
+const path = '/details/';
 const CarCard = ({ car }) => {
     const navigate = useNavigate();
-    
     function handleDetailsClick(ev, id) {
         ev.preventDefault()
-        navigate(`/details/${id}`)
+        navigate(path + id)
     }
-
     return (
         <>
             <div className="car" key={car._id}>

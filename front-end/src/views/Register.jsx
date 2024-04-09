@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
-import "./Register.css"
+import React, { useState } from 'react';
+import "./Register.css";
 import { post } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../controllers/auth';
 
-const Register = ({setAuthenticated, authenticated}) => {
+const Register = ({ setAuthenticated, authenticated }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     // const [repass, setRepass] = useState("");
     const navigate = useNavigate();
-    const registerUser = async (ev) => {
-        ev.preventDefault()
 
-        let userFile = await post('/register', {username, password})
-        if(userFile) {
+    const registerUser = async (ev) => {
+        ev.preventDefault();
+        let userFile = await post('/register', { username, password })
+        if (userFile) {
             console.log(userFile);
-            saveUser(userFile)
-            setAuthenticated(true)
-            navigate('/')
+            saveUser(userFile);
+            setAuthenticated(true);
+            navigate('/');
         }
     }
     return (
@@ -53,7 +53,7 @@ const Register = ({setAuthenticated, authenticated}) => {
                         id="repassword"
                         name="repassword"
                         required
-                        //onChange={ev => setRepass(ev.target.value)}
+                    //onChange={ev => setRepass(ev.target.value)}
                     />
                     <button type="submit">
                         Register

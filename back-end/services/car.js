@@ -1,6 +1,5 @@
 import Car from "../models/Car.js";
 import User from "../models/User.js";
-
 export async function createNewCar(newCar, requesterId) {
     const car = new Car(newCar);
     const user = await User.findById(requesterId);
@@ -22,7 +21,7 @@ export async function getCarById(carId) {
     const car = await Car
         .findById(carId)
         .where({ isDeleted: false })
-    return car 
+    return car
 }
 export async function deleteCarById(carId, requesterId) {
     const [car, user] = await Promise.all([

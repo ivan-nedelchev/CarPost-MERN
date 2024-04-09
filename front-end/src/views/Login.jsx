@@ -8,14 +8,15 @@ const Login = ({ setAuthenticated, authenticated }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
     const loginHandler = async (event) => {
-        event.preventDefault()
-        let res = await post('/login', {username, password})
+        event.preventDefault();
+        let res = await post('/login', { username, password });
         if (res.status != 401 && res.username) {
-            saveUser(res)
-            setAuthenticated(true)
+            saveUser(res);
+            setAuthenticated(true);
             console.log("Successful login");
-            navigate('/')
+            navigate('/');
         } else {
             console.log("Invalid credentials, try again");
         }
@@ -52,4 +53,4 @@ const Login = ({ setAuthenticated, authenticated }) => {
     )
 }
 
-export default Login
+export default Login;

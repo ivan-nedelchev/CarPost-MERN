@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import "./Navbar.css"
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import "./Navbar.css";
 import { logoutUser } from '../../controllers/auth';
 import { getUser } from '../../controllers/auth';
+
 const Navbar = ({ authenticated, setAuthenticated }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-
-    let user = getUser();
+    const user = getUser();
     return (
         <nav>
             <Link to="/" className='title'>
@@ -18,9 +18,6 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
                     setMenuOpen(!menuOpen)
                 }}
             >
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
             <ul className={menuOpen ? 'open' : ''}>
                 {authenticated ? (    //logged in view
@@ -48,4 +45,4 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
     )
 }
 
-export default Navbar
+export default Navbar;

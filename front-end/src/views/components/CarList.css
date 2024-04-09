@@ -1,29 +1,33 @@
 ul {
-   list-style: none;
+    list-style: none;
 }
+
 .carImage {
     width: 11.5em;
     height: 7em;
     display: block;
     margin: auto
 }
+
 .logo,
 .car {
     width: 11.5em;
     /* border-radius: 5px; */
-    margin: 5px     ;
+    margin: 5px;
 }
+
 .cars {
     justify-content: center;
     display: flex;
 }
+
 .car {
     /* border:1px solid #000000; */
     /* border-radius: 5px; */
-    display: inline-block; 
+    display: inline-block;
     height: 22vh;
-    
 }
+
 .container {
     position: relative;
 

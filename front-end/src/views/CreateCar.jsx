@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './CreateCar.css'
 import { post } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
-let path = '/create/car';
+const path = '/create/car';
 
 const CreateCar = () => {
     const navigate = useNavigate();
@@ -12,7 +12,12 @@ const CreateCar = () => {
     const [price, setPrice] = useState('')
     const createCar = async (ev) => {
         ev.preventDefault()
-        let carObject = await post(path, {name : carName, description, image, price})
+        let carObject = await post(path, {
+            name : carName, 
+            description, 
+            image, 
+            price
+        })
         if(carObject) {
             navigate('/')
         }
@@ -54,7 +59,6 @@ const CreateCar = () => {
                         required
                         onChange={ev => setPrice(Number(ev.target.value))}
                     />
-
                     <button type="submit">
                         Post
                     </button>
