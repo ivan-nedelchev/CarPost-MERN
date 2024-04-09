@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { get } from '../utils/api';
 const detailsPath = '/cars/';
 const deletePath = '/cars/delete/';
-
 const Details = () => {
+    const navigate = useNavigate();
     const { carId } = useParams();
     const [car, setCar] = useState()
     const user = JSON.parse(localStorage.getItem('user'))
@@ -19,9 +19,10 @@ const Details = () => {
         }
         getCar()
     }, []);
-    function handleDelete(ev, carId) {
+    async function handleDelete(ev, carId) {
         ev.preventDefault()
-        get(deletePath + carId)
+        await get(deletePath + carId)
+        navigate('/')
     }
     return (
         <div>
