@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./register.css"
+import "./Register.css"
 import { post } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../controllers/auth';

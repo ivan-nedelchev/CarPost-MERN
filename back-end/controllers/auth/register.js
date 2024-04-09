@@ -1,4 +1,4 @@
-import auth from '../services/auth.js'
+import auth from '../../services/auth.js'
 
 export async function registerController(req, res) {
     const { username, password } = req.body;

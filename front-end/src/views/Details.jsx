@@ -5,6 +5,8 @@ import { get } from '../utils/api';
 const Details = () => {
     const { carId } = useParams();
     const [car, setCar] = useState()
+    const user = JSON.parse(localStorage.getItem('user'))
+    const userId = user ? user.id : null;
     useEffect(() => {
         let getCar = async () => {
             let carDetails = await get(`/cars/${carId}`)
@@ -16,8 +18,6 @@ const Details = () => {
         ev.preventDefault()
         get(`/cars/delete/${carId}`)
     }
-    let user = JSON.parse(localStorage.getItem('user'))
-    let userId = user ? user.id : null;
     return (
         <div>
             {car ?
@@ -31,7 +31,6 @@ const Details = () => {
                             &&
                             <button onClick={(ev) => handleDelete(ev, car._id)} >Delete</button>
                         }
-
                     </div>
                 </div>
                 :

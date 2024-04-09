@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import "./navbar.css"
+import "./Navbar.css"
 import { logoutUser } from '../../controllers/auth';
 import { getUser } from '../../controllers/auth';
 const Navbar = ({ authenticated, setAuthenticated }) => {
