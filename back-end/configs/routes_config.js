@@ -10,7 +10,7 @@ export default (app) => {
     app.post('/register', registerController);
     app.post('/login', loginController);
     app.post('/create/car', createCar)
-    app.get('/logout', isLoggedIn(), logoutController);
+    app.get('/logout', logoutController);
     app.get('/cars', getCars)
     app.get('/cars/:id', getCar)
     app.get('/cars/delete/:id', deleteCar)

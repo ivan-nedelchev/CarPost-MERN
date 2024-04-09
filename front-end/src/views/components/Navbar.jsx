@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 import { logoutUser } from '../../controllers/auth';
-import { getUser } from '../../controllers/auth';
 
 const Navbar = ({ authenticated, setAuthenticated }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const user = getUser();
+    const navigate = useNavigate();
+
+    async function handleLogout(setAuthenticated) {
+        await logoutUser(setAuthenticated)
+        navigate('/');
+    }
     return (
         <nav>
             <Link to="/" className='title'>
@@ -18,6 +22,9 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
                     setMenuOpen(!menuOpen)
                 }}
             >
+                <span></span> 
+                <span></span>
+                <span></span>
             </div>
             <ul className={menuOpen ? 'open' : ''}>
                 {authenticated ? (    //logged in view
@@ -26,7 +33,7 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
                             <NavLink to="/create/car">Post Car</NavLink>
                         </li>
                         <li>
-                            <NavLink onClick={() => logoutUser(setAuthenticated)}>Logout</NavLink>
+                            <NavLink onClick={() => handleLogout(setAuthenticated)}>Logout</NavLink>
                         </li>
                     </>
                 ) : (  //no user view

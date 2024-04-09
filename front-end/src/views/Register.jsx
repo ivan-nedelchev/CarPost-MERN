@@ -4,7 +4,7 @@ import { post } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../controllers/auth';
 
-const Register = ({ setAuthenticated, authenticated }) => {
+const Register = ({ setAuthenticated }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     // const [repass, setRepass] = useState("");

@@ -33,9 +33,11 @@ const Details = () => {
                         <h4><b>Name: {car.name}</b></h4>
                         <p>Description: {car.description}</p>
                         <p>Price: {car.price}</p>
-                        {car.owner == userId
-                            &&
-                            <button onClick={(ev) => handleDelete(ev, car._id)} >Delete</button>
+                        {car.owner == userId &&
+                            <>
+                                <button onClick={(ev) => handleEdit(ev, car._id)} >Edit</button>
+                                <button onClick={(ev) => handleDelete(ev, car._id)} >Delete</button>
+                            </>
                         }
                     </div>
                 </div>

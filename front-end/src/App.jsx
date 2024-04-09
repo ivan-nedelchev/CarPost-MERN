@@ -19,8 +19,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/create/car" element={<CreateCar />} />
-                    <Route path="/register" element={<Register authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
-                    <Route path="/login" element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
+                    <Route path="/register" element={<Register setAuthenticated={setAuthenticated} />} />
+                    <Route path="/login" element={<Login setAuthenticated={setAuthenticated} />} />
                     <Route path="/details/:carId" element={<Details />} />
                 </Routes>
 

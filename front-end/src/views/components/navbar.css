@@ -48,7 +48,8 @@ nav .menu {
     flex-direction: column;
     justify-content: space-between;
     width: 2.25rem;
-    height: 2rem
+    height: 2rem;
+    cursor: pointer;
 }
 
 nav .menu span {

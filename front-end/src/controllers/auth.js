@@ -11,7 +11,6 @@ const deleteUser = () => {
 }
 
 const logoutUser = async (setAuthenticated) => {
-    console.log('logging out...');
     await get('/logout');
     deleteUser();
     setAuthenticated(false);

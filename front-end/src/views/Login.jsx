@@ -4,7 +4,7 @@ import { saveUser } from '../controllers/auth';
 import { useNavigate } from 'react-router-dom';
 import { post } from '../utils/api';
 
-const Login = ({ setAuthenticated, authenticated }) => {
+const Login = ({ setAuthenticated }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
