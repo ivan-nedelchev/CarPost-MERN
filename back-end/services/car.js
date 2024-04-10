@@ -48,3 +48,9 @@ export async function deleteCarById(carId, requesterId) {
         await user.save()
     ]);
 }
+export async function editCarById(carId, requesterId, updatedCarInfo) {
+    let car = await Car.findById(carId);
+    if(car.owner == requesterId) {
+       return await Car.findByIdAndUpdate(carId, {...updatedCarInfo}, { new: true })
+    }
+}

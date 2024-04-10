@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { get } from '../utils/api';
-import EditModal from './components/EditModal';
+import EditModal from './components/EditModal.jsx';
+
 
 const detailsPath = '/cars/';
 const deletePath = '/cars/delete/';
@@ -24,7 +25,7 @@ const Details = () => {
             setCar({ ...carDetails });
         }
         getCar();
-    }, []);
+    }, [modal]);
     async function handleDelete(ev, carId) {
         ev.preventDefault();
         await get(deletePath + carId);

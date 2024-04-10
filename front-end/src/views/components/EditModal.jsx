@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from './Modal'
 import './EditModal.css';
-const path = '';
+import { post } from '../../utils/api';
+const path = '/cars/delete/';
 
-const EditModal = ({toggleModal}) => {
+const EditModal = ({ toggleModal, car }) => {
     const [formData, setFormData] = useState({});
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -13,9 +13,10 @@ const EditModal = ({toggleModal}) => {
             [name]: value,
         });
     };
-    function handleSubmitEdit(ev) {
+    async function handleSubmitEdit(ev) {
         ev.preventDefault()
-        console.log(formData);
+        await post(path + car._id, {car : formData})
+        toggleModal()
     }
     return (
         <Modal toggleModal={toggleModal} headerText="Edit car information">
@@ -26,6 +27,7 @@ const EditModal = ({toggleModal}) => {
                     id="name"
                     name="name"
                     required
+                    defaultValue={car.name}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="description">Description:</label>
@@ -34,6 +36,7 @@ const EditModal = ({toggleModal}) => {
                     id="description"
                     name="description"
                     required
+                    defaultValue={car.description}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="image">Image URL:</label>
@@ -42,6 +45,7 @@ const EditModal = ({toggleModal}) => {
                     id="image"
                     name="image"
                     required
+                    defaultValue={car.image}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="price">Price:</label>
@@ -50,6 +54,7 @@ const EditModal = ({toggleModal}) => {
                     id="price"
                     name="price"
                     required
+                    defaultValue={car.price}
                     onChange={handleInputChange}
                 />
                 <button type="submit">
