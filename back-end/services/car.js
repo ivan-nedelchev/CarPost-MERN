@@ -25,32 +25,33 @@ export async function getCarById(carId) {
     return car
 }
 export async function deleteCarById(carId, requesterId) {
-    const [car, user] = await Promise.all([
-        await Car.findByIdAndUpdate(carId, { 
-            isDeleted: true, 
-            owner : requesterId 
-        }),
-        await User.findById(requesterId)
-    ]);
+    let car = await Car.findById(carId);
+    let user = await User.findById(requesterId)
     if (car == null || user == null) {
         return null;
-    }
-    user.posts
-        .map(p => p.toString())
-        .forEach((ci, i) => {
-            if (ci.includes(carId)) {
-                user.posts.splice(i, 1);
-                return;
-            }
-        });
-    return await Promise.all([
-        await car.save(),
+    } else if (car.owner == requesterId) {
+        user.posts
+            .map(post => post.toString())
+            .forEach((ci, i) => {
+                if (ci.includes(carId)) {
+                    user.posts.splice(i, 1);
+                    return;
+                }
+            });
         await user.save()
-    ]);
+        return (await Car.findByIdAndUpdate(carId,
+            { isDeleted: true },
+            { new: true })
+        )
+    }
 }
 export async function editCarById(carId, requesterId, updatedCarInfo) {
     let car = await Car.findById(carId);
-    if(car.owner == requesterId) {
-       return await Car.findByIdAndUpdate(carId, {...updatedCarInfo}, { new: true })
+    if (car.owner == requesterId) {
+        return (await Car.findByIdAndUpdate(
+            carId,
+            { ...updatedCarInfo },
+            { new: true })
+        )
     }
 }
