@@ -11,4 +11,4 @@ async function start() {
     routesConfig(app);
     console.log('APP STARTED');
 }
-start()
+start();

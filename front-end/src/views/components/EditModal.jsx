@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Modal from './Modal'
 import './EditModal.css';
 import { post } from '../../utils/api';
-const path = '/cars/delete/';
+const path = '/cars/edit/';
 
 const EditModal = ({ toggleModal, car }) => {
     const [formData, setFormData] = useState({});
@@ -14,9 +14,11 @@ const EditModal = ({ toggleModal, car }) => {
         });
     };
     async function handleSubmitEdit(ev) {
-        ev.preventDefault()
-        await post(path + car._id, {car : formData})
-        toggleModal()
+        ev.preventDefault();
+        await post(path + car._id, {
+            car: formData
+        });
+        toggleModal();
     }
     return (
         <Modal toggleModal={toggleModal} headerText="Edit car information">
@@ -65,4 +67,4 @@ const EditModal = ({ toggleModal, car }) => {
     )
 }
 
-export default EditModal
+export default EditModal;

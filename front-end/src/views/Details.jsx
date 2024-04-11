@@ -53,7 +53,7 @@ const Details = () => {
             }
             {modal &&
                 <>
-                    <EditModal car={car} toggleModal={toggleModal}/>
+                    <EditModal car={car} toggleModal={toggleModal} />
                 </>}
         </div>
     )

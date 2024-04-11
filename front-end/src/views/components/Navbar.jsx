@@ -8,7 +8,7 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
     const navigate = useNavigate();
 
     async function handleLogout(setAuthenticated) {
-        await logoutUser(setAuthenticated)
+        await logoutUser(setAuthenticated);
         navigate('/');
     }
     return (
@@ -22,7 +22,7 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
                     setMenuOpen(!menuOpen)
                 }}
             >
-                <span></span> 
+                <span></span>
                 <span></span>
                 <span></span>
             </div>

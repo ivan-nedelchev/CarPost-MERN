@@ -9,10 +9,12 @@ const Register = ({ setAuthenticated }) => {
     const [password, setPassword] = useState("");
     // const [repass, setRepass] = useState("");
     const navigate = useNavigate();
-
     const registerUser = async (ev) => {
         ev.preventDefault();
-        let userFile = await post('/register', { username, password })
+        let userFile = await post('/register', {
+            username,
+            password
+        })
         if (userFile) {
             console.log(userFile);
             saveUser(userFile);
@@ -64,4 +66,4 @@ const Register = ({ setAuthenticated }) => {
     )
 }
 
-export default Register
+export default Register;
