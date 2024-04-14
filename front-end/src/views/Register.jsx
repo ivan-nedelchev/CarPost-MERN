@@ -5,14 +5,20 @@ import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../controllers/auth';
 
 const Register = ({ setAuthenticated }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    // const [repass, setRepass] = useState("");
+    const [formData, setFormData] = useState({})
     const navigate = useNavigate();
+    const saveInput = (ev) => {
+        const inputName = ev.target.name;
+        const value = ev.target.value;
+        setFormData({
+            ...formData,
+            [inputName]: value
+        })
+    }
 
     const registerUser = async (ev) => {
         ev.preventDefault();
-        let userFile = await post('/register', { username, password })
+        let userFile = await post('/register', { ...formData })
         if (userFile) {
             console.log(userFile);
             saveUser(userFile);
@@ -30,7 +36,7 @@ const Register = ({ setAuthenticated }) => {
                         type="text"
                         id="username"
                         name="username"
-                        onChange={ev => setUsername(ev.target.value)}
+                        onChange={saveInput}
                         required
                     />
                     <label htmlFor="password"
@@ -43,7 +49,7 @@ const Register = ({ setAuthenticated }) => {
                         title="Password must contain at least one number, 
                    one alphabet, one symbol, and be at 
                    least 8 characters long"
-                        onChange={ev => setPassword(ev.target.value)}
+                        onChange={saveInput}
                         required
                     />
                     <label htmlFor="repassword"
@@ -53,7 +59,7 @@ const Register = ({ setAuthenticated }) => {
                         id="repassword"
                         name="repassword"
                         required
-                    //onChange={ev => setRepass(ev.target.value)}
+                        onChange={saveInput}
                     />
                     <button type="submit">
                         Register

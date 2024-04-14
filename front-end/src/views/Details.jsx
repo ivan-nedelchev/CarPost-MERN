@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { get } from '../utils/api';
 import EditModal from './components/EditModal.jsx';
 
-
 const detailsPath = '/cars/';
 const deletePath = '/cars/delete/';
 const Details = () => {
@@ -53,7 +52,7 @@ const Details = () => {
             }
             {modal &&
                 <>
-                    <EditModal car={car} toggleModal={toggleModal}/>
+                    <EditModal car={car} toggleModal={toggleModal} />
                 </>}
         </div>
     )

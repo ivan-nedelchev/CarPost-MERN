@@ -1,0 +1,9 @@
+[] - verify password match at register and display msg if incorrect
+[] - make css better everywhere
+[] - error handling
+[] - create accessories
+[] - attach accessories to cars
+[] - add "My Cars" page
+[] - add owned accessories to "My Cars" page
+[] - Frontend and backend check if session is valid and delete cookie
+[] - mobile view

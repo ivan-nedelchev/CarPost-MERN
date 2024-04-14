@@ -43,7 +43,6 @@ const Login = ({ setAuthenticated }) => {
                         required
                         onChange={ev => setPassword(ev.target.value)}
                     />
-
                     <button type="submit">
                         Login
                     </button>
