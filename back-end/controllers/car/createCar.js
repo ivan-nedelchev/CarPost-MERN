@@ -1,7 +1,7 @@
 import { createNewCar } from "../../services/car.js";
 
 export async function createCar(req, res) {
-    let user = JSON.parse(req.session.user);
+    const user = JSON.parse(req.session.user);
     try {
         const newCar = {
             name: req.body.name,

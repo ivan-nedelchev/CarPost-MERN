@@ -11,7 +11,10 @@ const Login = ({ setAuthenticated }) => {
 
     const loginHandler = async (event) => {
         event.preventDefault();
-        let res = await post('/login', { username, password });
+        let res = await post('/login', {
+            username,
+            password
+        });
         if (res.status != 401 && res.username) {
             saveUser(res);
             setAuthenticated(true);

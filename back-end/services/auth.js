@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 const bcryptSalt = bcrypt.genSaltSync(10);
 export default {
     async register(username, password) {
@@ -18,7 +18,7 @@ export default {
     async login(username, password) {
         const user = await User.findOne({ username });
         if (user) {
-            let comparedPassword = bcrypt.compareSync(password, user.hashedPassword)
+            const comparedPassword = bcrypt.compareSync(password, user.hashedPassword);
             if (comparedPassword) {
                 return user;
             }

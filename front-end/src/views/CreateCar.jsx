@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
-import './CreateCar.css'
+import React, { useState } from 'react';
+import './CreateCar.css';
 import { post } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 const path = '/create/car';
 
 const CreateCar = () => {
     const navigate = useNavigate();
-    const [carName, setCarName] = useState('')
-    const [description, setDescription] = useState('')
-    const [image, setImage] = useState('')
-    const [price, setPrice] = useState('')
+    const [carName, setCarName] = useState('');
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
+    const [price, setPrice] = useState('');
     const createCar = async (ev) => {
-        ev.preventDefault()
+        ev.preventDefault();
         let carObject = await post(path, {
-            name : carName, 
-            description, 
-            image, 
+            name: carName,
+            description,
+            image,
             price
         })
-        if(carObject) {
-            navigate('/')
+        if (carObject) {
+            navigate('/');
         }
     }
     return (
@@ -43,7 +43,7 @@ const CreateCar = () => {
                         required
                         onChange={ev => setDescription(ev.target.value)}
                     />
-                     <label htmlFor="image">Image URL:</label>
+                    <label htmlFor="image">Image URL:</label>
                     <input
                         type="text"
                         id="image"
@@ -51,7 +51,7 @@ const CreateCar = () => {
                         required
                         onChange={ev => setImage(ev.target.value)}
                     />
-                     <label htmlFor="price">Price:</label>
+                    <label htmlFor="price">Price:</label>
                     <input
                         type="text"
                         id="price"
@@ -68,4 +68,4 @@ const CreateCar = () => {
     )
 }
 
-export default CreateCar
+export default CreateCar;

@@ -70,4 +70,4 @@ const Register = ({ setAuthenticated }) => {
     )
 }
 
-export default Register
+export default Register;

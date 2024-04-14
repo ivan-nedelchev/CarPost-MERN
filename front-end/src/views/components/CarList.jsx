@@ -7,15 +7,15 @@ const CarList = ({ cars }) => {
         <>
             <ul className='cars'>
                 {cars.length > 0 ?
-                        cars.map(car => <li key={car._id}><CarCard car={car} /></li>)
+                    cars.map(car => <li key={car._id}><CarCard car={car} /></li>)
                     :
-                        <>
-                            <h2>No cars to list. Be the first one!</h2>
-                        </>
+                    <>
+                        <h2>No cars to list. Be the first one!</h2>
+                    </>
                 }
             </ul>
         </>
     )
 }
 
-export default CarList
+export default CarList;
