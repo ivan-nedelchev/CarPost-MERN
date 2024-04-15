@@ -19,9 +19,10 @@ const Register = ({ setAuthenticated }) => {
 
     const registerUser = async (ev) => {
         ev.preventDefault();
-        if (formData.password != formData.repass) {
+        if (formData.password != formData.repassword) {
             setPasswordMatching(false)
         } else {
+            setPasswordMatching(true)
             let userFile = await post('/register', { ...formData })
             if (userFile) {
                 console.log(userFile);
