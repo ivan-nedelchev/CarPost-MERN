@@ -7,8 +7,8 @@ import { post } from '../utils/api';
 const Login = ({ setAuthenticated }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [invalidLogin, setInvalidLogin] = useState(false)
     const navigate = useNavigate();
-
     const loginHandler = async (event) => {
         event.preventDefault();
         let res = await post('/login', { username, password });
@@ -18,7 +18,7 @@ const Login = ({ setAuthenticated }) => {
             console.log("Successful login");
             navigate('/');
         } else {
-            console.log("Invalid credentials, try again");
+            setInvalidLogin(true)
         }
     }
     return (
@@ -46,6 +46,13 @@ const Login = ({ setAuthenticated }) => {
                     <button type="submit">
                         Login
                     </button>
+
+                    {invalidLogin &&
+                        <div className='error-msg'>
+                            <p>Invalid credentials.</p>
+                            <p>Try again</p>
+                        </div>
+                    }
                 </form>
             </div>
         </>

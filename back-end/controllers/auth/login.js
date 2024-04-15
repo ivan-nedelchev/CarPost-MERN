@@ -5,6 +5,8 @@ export async function loginController(req, res) {
     try {
         const user = await auth.login(username, password);
         if (user == null) {
+            res.status(401)
+            res.send()
             throw new Error('Incorrect username or password');
         }
         req.session.user = JSON.stringify({ username, id: user._id });

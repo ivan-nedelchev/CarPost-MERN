@@ -38,7 +38,6 @@ const Register = ({ setAuthenticated }) => {
         } else {
             let userFile = await post('/register', { ...formData });
             if (userFile) {
-                console.log(userFile);
                 saveUser(userFile);
                 setAuthenticated(true);
                 navigate('/');

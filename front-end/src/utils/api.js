@@ -17,7 +17,7 @@ async function request(method, path, data) {
         options.credentials = 'include'
         response = await fetch(url + path, options);
     }
-    if (response.status != 204 ) {
+    if (response.status != 204 && response.status != 401) {
         return response.json()
     }
     return response
