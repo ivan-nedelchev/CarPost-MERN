@@ -16,9 +16,9 @@
     width: 30vh;
 }
 
-h3 {
-    padding: 25px 100px 50px;
-}
+/* h3 {
+    padding: 25px 100px 10px;
+} */
 
 .registerForm input {
     width: 100%;
@@ -32,4 +32,9 @@ h3 {
 
 button:hover {
     cursor: pointer;
+}
+.error-msg {
+    color: red;
+    padding-bottom: 20px;
+    font-weight: bold;
 }
