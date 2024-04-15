@@ -14,13 +14,13 @@ async function request(method, path, data) {
         response = await fetch(url + path, options);
     } else {
         options.method = method;
-        options.credentials = 'include';
+        options.credentials = 'include'
         response = await fetch(url + path, options);
     }
-    if (response.status != 204) {
-        return response.json();
+    if (response.status != 204 ) {
+        return response.json()
     }
-    return response;
+    return response
 }
 
 let get = (path) => request("GET", path);

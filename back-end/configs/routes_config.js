@@ -12,8 +12,8 @@ export default (app) => {
     app.post('/login', loginController);
     app.post('/create/car', createCar)
     app.get('/logout', logoutController);
-    app.get('/cars', getCars);
-    app.get('/cars/:id', getCar);
-    app.get('/cars/delete/:id', deleteCar);
-    app.post('/cars/edit/:id', editCar);
+    app.get('/cars', getCars)
+    app.get('/cars/:id', getCar)
+    app.get('/cars/delete/:id', deleteCar)
+    app.post('/cars/delete/:id', editCar)
 }

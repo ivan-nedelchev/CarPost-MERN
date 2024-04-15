@@ -1,12 +1,11 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 const path = '/details/';
 const CarCard = ({ car }) => {
     const navigate = useNavigate();
     function handleDetailsClick(ev, id) {
-        ev.preventDefault();
-        navigate(path + id);
+        ev.preventDefault()
+        navigate(path + id)
     }
     return (
         <>
@@ -22,4 +21,4 @@ const CarCard = ({ car }) => {
     )
 }
 
-export default CarCard;
+export default CarCard

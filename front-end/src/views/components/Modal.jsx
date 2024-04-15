@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import './Modal.css';
 const Modal = ({ children, toggleModal, headerText }) => {
     return (
@@ -17,4 +17,4 @@ const Modal = ({ children, toggleModal, headerText }) => {
     )
 }
 
-export default Modal;
+export default Modal
