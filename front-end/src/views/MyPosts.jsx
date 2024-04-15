@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { get } from '../utils/api';
 import CarList from './components/CarList';
+import { get } from '../utils/api';
 import { fetchCars } from '../utils/cars';
-const Home = () => {
+
+
+const MyPosts = () => {
     const [cars, setCars] = useState([]);
     useEffect(() => {
         let getCars = async () => {
@@ -12,10 +14,12 @@ const Home = () => {
         getCars();
     }, []);
     return (
-        <>
-            <CarList cars={cars} />
-        </>
+        <div>
+            <>
+                <CarList cars={cars} />
+            </>
+        </div>
     )
 }
 
-export default Home;
+export default MyPosts;

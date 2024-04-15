@@ -13,8 +13,17 @@ export async function createNewCar(newCar, requesterId) {
         user.save()
     ]);
 }
-export async function listCars(query) {
-    const filterCriteria = { isDeleted: false };
+export async function listCars(searchParams) {
+    let filterCriteria = { isDeleted: false };
+    if(Object.keys(searchParams.properties).length != 0) {
+        filterCriteria = {
+            ...filterCriteria,
+            ...searchParams.properties
+        }
+    }
+
+
+    
     const cars = await Car.find(filterCriteria);
     return cars
 }

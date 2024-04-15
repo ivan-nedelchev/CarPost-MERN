@@ -7,6 +7,7 @@ import Register from './views/Register';
 import { Route, Routes } from 'react-router-dom';
 import CreateCar from './views/CreateCar';
 import Details from './views/Details';
+import MyPosts from './views/MyPosts';
 function App() {
     const [authenticated, setAuthenticated] = useState(
         localStorage.getItem('user') !== null
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/register" element={<Register setAuthenticated={setAuthenticated} />} />
                     <Route path="/login" element={<Login setAuthenticated={setAuthenticated} />} />
                     <Route path="/details/:carId" element={<Details />} />
+                    <Route path="/my-posts" element={<MyPosts />} />
                 </Routes>
 
             </div>

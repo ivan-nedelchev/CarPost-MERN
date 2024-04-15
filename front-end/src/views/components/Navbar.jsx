@@ -30,7 +30,10 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
                 {authenticated ? (    //logged in view
                     <>
                         <li>
-                            <NavLink to="/create/car">Post Car</NavLink>
+                            <NavLink to="/my-posts">My Posts</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/create/car">Post a Car</NavLink>
                         </li>
                         <li>
                             <NavLink onClick={() => handleLogout(setAuthenticated)}>Logout</NavLink>

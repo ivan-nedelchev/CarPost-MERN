@@ -10,7 +10,7 @@ const CarList = ({ cars }) => {
                         cars.map(car => <li key={car._id}><CarCard car={car} /></li>)
                     :
                         <>
-                            <h2>No cars to list. Be the first one!</h2>
+                            <h2>No cars to list. Add the first one!</h2>
                         </>
                 }
             </ul>

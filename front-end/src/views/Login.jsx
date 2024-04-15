@@ -24,7 +24,7 @@ const Login = ({ setAuthenticated }) => {
     return (
         <>
             <div className='loginForm'>
-                <h3>Login Page</h3>
+                <h3 style={{ padding: '20px' }}>Login Page</h3>
                 <form onSubmit={loginHandler} action="/login" method="post">
                     <label htmlFor="username">Username:</label>
                     <input
