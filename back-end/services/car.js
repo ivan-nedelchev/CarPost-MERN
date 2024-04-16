@@ -15,7 +15,7 @@ export async function createNewCar(newCar, requesterId) {
 }
 export async function listCars(searchParams) {
     let filterCriteria = { isDeleted: false };
-    if(Object.keys(searchParams.properties).length != 0) {
+    if(searchParams?.properties && Object.keys(searchParams.properties).length != 0) {
         filterCriteria = {
             ...filterCriteria,
             ...searchParams.properties
