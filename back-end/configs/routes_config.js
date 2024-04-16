@@ -10,10 +10,10 @@ import { editCar } from "../controllers/car/editCar.js";
 export default (app) => {
     app.post('/register', registerController);
     app.post('/login', loginController);
-    app.post('/create/car', createCar)
     app.get('/logout', logoutController);
-    app.post('/cars', getCars)
-    app.get('/cars/:id', getCar)
-    app.get('/cars/delete/:id', deleteCar)
-    app.post('/cars/delete/:id', editCar)
+    app.post('/cars', getCars)  //to FIX, needs to be GET with url params
+    app.get('/car/:id', getCar)
+    app.post('/car', createCar)
+    app.put('/car/:id', editCar)
+    app.delete('/car/:id', deleteCar)
 }

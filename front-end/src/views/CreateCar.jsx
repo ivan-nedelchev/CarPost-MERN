@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './CreateCar.css'
 import { post } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
-const path = '/create/car';
+const path = '/car/';
 
 const CreateCar = () => {
     const navigate = useNavigate();

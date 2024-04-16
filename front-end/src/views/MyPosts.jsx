@@ -4,7 +4,6 @@ import { get } from '../utils/api';
 import { fetchCars } from '../utils/cars';
 import { getUser } from '../controllers/auth';
 
-
 const MyPosts = () => {
     const [cars, setCars] = useState([]);
     useEffect(() => {

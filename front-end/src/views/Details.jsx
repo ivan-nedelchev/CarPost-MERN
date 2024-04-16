@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { get } from '../utils/api';
+import { get, delete as delete_ } from '../utils/api';
 import EditModal from './components/EditModal.jsx';
 
-const detailsPath = '/cars/';
-const deletePath = '/cars/delete/';
+const detailsPath = '/car/';
+const deletePath = '/car/';
 const Details = () => {
     const [modal, setModal] = useState(false);
     function toggleModal() {
@@ -27,7 +27,7 @@ const Details = () => {
     }, [modal]);
     async function handleDelete(ev, carId) {
         ev.preventDefault();
-        await get(deletePath + carId);
+        await delete_(deletePath + carId); 
         navigate('/');
     }
     return (
