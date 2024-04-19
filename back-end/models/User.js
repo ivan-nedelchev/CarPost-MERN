@@ -1,29 +1,29 @@
-import { Schema, Types, model } from 'mongoose';
+import { Schema, Types, model } from "mongoose";
 const { ObjectId } = Types;
 const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    hashedPassword: {
-        type: String,
-        required: true
-    },
-    posts: {
-        type: [ObjectId],
-        ref: 'Car',
-        default: []
-    }
+  username: {
+    type: String,
+    required: true,
+  },
+  hashedPassword: {
+    type: String,
+    required: true,
+  },
+  posts: {
+    type: [ObjectId],
+    ref: "Car",
+    default: [],
+  },
 });
 userSchema.index(
-    { username: 1 },
-    {
-        unique: true,
-        collation: {
-            locale: 'en',
-            strength: 2
-        }
-    }
+  { username: 1 },
+  {
+    unique: true,
+    collation: {
+      locale: "en",
+      strength: 2,
+    },
+  }
 );
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 export default User;

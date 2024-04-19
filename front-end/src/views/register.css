@@ -1,19 +1,19 @@
 .registerForm {
-    display: inline-block;
-    text-align: center;
-    margin-left: 25%;
-    width: 50%;
-    border: 1px solid rgb(59, 55, 184);
-    padding: 10px;
+  display: inline-block;
+  text-align: center;
+  margin-left: 25%;
+  width: 50%;
+  border: 1px solid rgb(59, 55, 184);
+  padding: 10px;
 }
 
 .registerForm form {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    margin: auto;
-    width: 30vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  width: 30vh;
 }
 
 /* h3 {
@@ -21,20 +21,20 @@
 } */
 
 .registerForm input {
-    width: 100%;
-    padding-bottom: 20px;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
 .registerForm button {
-    margin-top: 20px;
-    padding: 10px 30px;
+  margin-top: 20px;
+  padding: 10px 30px;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .error-msg {
-    color: red;
-    padding: 5px;
-    font-weight: bold;
+  color: red;
+  padding: 5px;
+  font-weight: bold;
 }
