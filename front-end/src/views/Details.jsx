@@ -21,7 +21,7 @@ const Details = () => {
       setCar({ ...carDetails });
     };
     getCar();
-  }, [modal]);
+  }, [carId, modal]);
   async function handleDelete(ev, carId) {
     ev.preventDefault();
     await delete_(deletePath + carId);
@@ -40,7 +40,7 @@ const Details = () => {
             <p>Price: {car.price}</p>
             {car.owner == userId && (
               <>
-                <button onClick={(ev) => setModal(true)}>Edit</button>
+                <button onClick={() => setModal(true)}>Edit</button>
                 <button onClick={(ev) => handleDelete(ev, car._id)}>
                   Delete
                 </button>

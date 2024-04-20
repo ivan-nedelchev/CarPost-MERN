@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import "./Login.css";
 import { saveUser } from "../controllers/auth";
@@ -54,6 +55,9 @@ const Login = ({ setAuthenticated }) => {
       </div>
     </>
   );
+};
+Login.propTypes = {
+  setAuthenticated: PropTypes.func.isRequired,
 };
 
 export default Login;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import CarCard from "./CarCard";
 import "./CarList.css";
 
@@ -19,6 +20,9 @@ const CarList = ({ cars }) => {
       </ul>
     </>
   );
+};
+CarList.propTypes = {
+  cars: PropTypes.array.isRequired,
 };
 
 export default CarList;

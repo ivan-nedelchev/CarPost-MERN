@@ -1,8 +1,8 @@
 import express from "express";
-import expressConfig from "./configs/express_config.js";
-import portConfig from "./configs/port_config.js";
-import mongooseConfig from "./configs/mongoose_config.js";
-import routesConfig from "./configs/routes_config.js";
+import expressConfig from "./configs/express.js";
+import portConfig from "./configs/port.js";
+import mongooseConfig from "./configs/mongoose.js";
+import routesConfig from "./configs/routes.js";
 
 async function start() {
   const app = express();
@@ -13,8 +13,4 @@ async function start() {
   console.log("APP STARTED");
 }
 
-try {
-  start();
-} catch (error) {
-  console.log(error.message);
-}
+start();

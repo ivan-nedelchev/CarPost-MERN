@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Modal.css";
 const Modal = ({ children, toggleModal, headerText }) => {
   return (
@@ -14,6 +15,11 @@ const Modal = ({ children, toggleModal, headerText }) => {
       </div>
     </>
   );
+};
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  headerText: PropTypes.string.isRequired,
 };
 
 export default Modal;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 const path = "/details/";
 const CarCard = ({ car }) => {
@@ -22,6 +23,9 @@ const CarCard = ({ car }) => {
       </div>
     </>
   );
+};
+CarCard.propTypes = {
+  car: PropTypes.object.isRequired,
 };
 
 export default CarCard;

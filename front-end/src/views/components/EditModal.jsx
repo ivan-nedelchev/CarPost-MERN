@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import Modal from "./Modal";
 import "./EditModal.css";
@@ -66,6 +67,10 @@ const EditModal = ({ toggleModal, car }) => {
       </form>
     </Modal>
   );
+};
+EditModal.propTypes = {
+  toggleModal: PropTypes.bool.isRequired,
+  car: PropTypes.object.isRequired,
 };
 
 export default EditModal;

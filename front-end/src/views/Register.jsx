@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import "./Register.css";
 import { post } from "../utils/api";
@@ -96,5 +97,7 @@ const Register = ({ setAuthenticated }) => {
     </>
   );
 };
-
+Register.propTypes = {
+  setAuthenticated: PropTypes.func.isRequired,
+};
 export default Register;
