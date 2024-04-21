@@ -1,6 +1,6 @@
 import { registerService, loginService } from "../services/auth.js";
 
-export async function registerController(req, res) {
+export const registerController = async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await registerService(username, password);
@@ -12,9 +12,9 @@ export async function registerController(req, res) {
   } catch (err) {
     console.log("Error registering user:", err);
   }
-}
+};
 
-export async function loginController(req, res) {
+export const loginController = async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await loginService(username, password);
@@ -28,9 +28,9 @@ export async function loginController(req, res) {
   } catch (err) {
     console.log("Error user login:", err);
   }
-}
+};
 
-export async function logoutController(req, res) {
+export const logoutController = (req, res) => {
   req.session.destroy((err) => {
     console.log("destroying session");
     if (err) {
@@ -43,4 +43,4 @@ export async function logoutController(req, res) {
         .sendStatus(204);
     }
   });
-}
+};

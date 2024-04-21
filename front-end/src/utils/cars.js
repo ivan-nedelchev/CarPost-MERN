@@ -1,7 +1,7 @@
 import { post } from "./api";
 const path = "/cars";
 
-export async function fetchCars(searchParams) {
+export const fetchCars = async (searchParams) => {
   let carsArray = await post(path, searchParams);
   return carsArray;
-}
+};

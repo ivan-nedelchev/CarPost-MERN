@@ -1,5 +1,5 @@
 const url = "http://localhost:5555";
-async function request(method, path, data) {
+const request = async (method, path, data) => {
   let options = {};
   let response;
   if (data) {
@@ -19,7 +19,7 @@ async function request(method, path, data) {
     return response.json();
   }
   return response;
-}
+};
 
 let get = (path) => request("GET", path);
 let put = (path, data) => request("PUT", path, data);

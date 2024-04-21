@@ -6,7 +6,7 @@ import {
   listCarsService,
 } from "../services/car.js";
 
-export async function createCarController(req, res) {
+export const createCarController = async (req, res) => {
   let user = JSON.parse(req.session.user);
   try {
     const newCar = {
@@ -27,31 +27,31 @@ export async function createCarController(req, res) {
     console.log(err.message);
     res.sendStatus(204);
   }
-}
+};
 
-export async function deleteCarController(req, res) {
+export const deleteCarController = async (req, res) => {
   let requesterId = JSON.parse(req.session.user).id;
   const carId = req.params.id;
   let car = await deleteCarService(carId, requesterId);
   res.json(car);
-}
+};
 
-export async function editCarController(req, res) {
+export const editCarController = async (req, res) => {
   let requesterId = JSON.parse(req.session.user).id;
   let updatedCarInfo = req.body.car;
   const carId = req.params.id;
   let car = await editCarService(carId, requesterId, updatedCarInfo);
   res.json(car);
-}
+};
 
-export async function getCarController(req, res) {
+export const getCarController = async (req, res) => {
   const carId = req.params.id;
   let car = await getCarService(carId);
   res.json(car);
-}
+};
 
-export async function getCarsController(req, res) {
-  const searchParams = req.body;
-  const cars = await listCarsService(searchParams);
+export const getCarsController = async (req, res) => {
+  const queryParams = req.query;
+  const cars = await listCarsService(queryParams);
   res.json(cars);
-}
+};

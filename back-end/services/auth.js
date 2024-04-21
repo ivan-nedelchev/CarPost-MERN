@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import { hashSync, compareSync, genSaltSync } from "bcrypt";
 const bcryptSalt = genSaltSync(10);
 
-export async function registerService(username, password) {
+export const registerService = async (username, password) => {
   const isUserExist = await User.findOne({ username });
   const hashedPassword = hashSync(password, bcryptSalt);
   if (!isUserExist) {
@@ -14,9 +14,9 @@ export async function registerService(username, password) {
   } else {
     return null;
   }
-}
+};
 
-export async function loginService(username, password) {
+export const loginService = async (username, password) => {
   const user = await User.findOne({ username });
   if (user) {
     let comparedPassword = compareSync(password, user.hashedPassword);
@@ -26,4 +26,4 @@ export async function loginService(username, password) {
   } else {
     return null;
   }
-}
+};
