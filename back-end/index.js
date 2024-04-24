@@ -3,6 +3,7 @@ import expressConfig from "./configs/express.js";
 import portConfig from "./configs/port.js";
 import mongooseConfig from "./configs/mongoose.js";
 import routesConfig from "./configs/routes.js";
+import 'dotenv/config';
 
 const start = async () => {
   const app = express();

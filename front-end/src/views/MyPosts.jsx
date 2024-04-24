@@ -8,11 +8,7 @@ const MyPosts = () => {
   useEffect(() => {
     const getUserCars = async () => {
       const user = getUser();
-      const searchParams = {
-        properties: {
-          owner: user.id,
-        },
-      };
+      const searchParams = {owner: user.id}
       const carsArray = await fetchCars(searchParams);
       setCars([...carsArray]);
     };

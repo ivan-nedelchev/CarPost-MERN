@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
+const databaseName = "carpost";
 export default async () => {
   try {
-    const databaseName = "carpost";
-    const connectionString = `mongodb://localhost:27017/${databaseName}`; //TO DO: Use online mongoose database
+    const connectionString = `${process.env.MONGO_URI}${databaseName}`; //TO DO: Use online mongoose database
     await mongoose.connect(connectionString);
     mongoose.connection.on("error", (err) => {
       throw new Error(err);

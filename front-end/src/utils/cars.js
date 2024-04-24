@@ -1,5 +1,5 @@
 import { get } from "./api";
-import {encodeQueryParams} from './utils'
+import {encodeQueryParams} from './util'
 const path = "/cars";
 
 export const fetchCars = async (searchParams) => {

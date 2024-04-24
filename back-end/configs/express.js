@@ -10,7 +10,7 @@ export default (app) => {
   );
   app.use(
     session({
-      secret: "#TopSECRETsecret*!",
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       cookie: {
