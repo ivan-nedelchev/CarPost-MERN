@@ -1,7 +1,13 @@
-import { post } from "./api";
+import { get } from "./api";
+import {encodeQueryParams} from './utils'
 const path = "/cars";
 
 export const fetchCars = async (searchParams) => {
-  let carsArray = await post(path, searchParams);
+  if(searchParams) {
+    console.log(searchParams);
+    let encodedParams = encodeQueryParams(searchParams)
+    return await get(`${path}?${encodedParams}`)
+  }
+  let carsArray = await get(path);
   return carsArray;
 };
