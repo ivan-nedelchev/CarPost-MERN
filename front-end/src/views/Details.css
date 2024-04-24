@@ -1,0 +1,41 @@
+.car-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .car-card img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .car-details {
+    padding: 20px;
+  }
+  
+  .car-details h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .car-details .description {
+    margin-bottom: 10px;
+  }
+  
+  .car-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .car-details ul li {
+    margin-bottom: 5px;
+  }
+  
+  .car-details ul li strong {
+    font-weight: bold;
+  }

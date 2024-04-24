@@ -27,13 +27,31 @@ const EditModal = ({ toggleModal, car }) => {
         action="/create/car"
         method="post"
       >
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="make">Make:</label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="make"
+          name="make"
           required
-          defaultValue={car.name}
+          defaultValue={car.make}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="model">Model:</label>
+        <input
+          type="text"
+          id="model"
+          name="model"
+          required
+          defaultValue={car.model}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="year">Year:</label>
+        <input
+          type="text"
+          id="year"
+          name="year"
+          required
+          defaultValue={car.year}
           onChange={handleInputChange}
         />
         <label htmlFor="description">Description:</label>
@@ -63,7 +81,7 @@ const EditModal = ({ toggleModal, car }) => {
           defaultValue={car.price}
           onChange={handleInputChange}
         />
-        <button type="submit">Save Edit</button>
+        <button type="submit">Save</button>
       </form>
     </Modal>
   );

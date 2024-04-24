@@ -6,17 +6,28 @@ const path = "/car/";
 
 const CreateCar = () => {
   const navigate = useNavigate();
-  const [carName, setCarName] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [price, setPrice] = useState("");
+  
+  const [formData, setFormData] = useState({});
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+
+
   const createCar = async (ev) => {
     ev.preventDefault();
+    console.log(formData);
     let carObject = await post(path, {
-      name: carName,
-      description,
-      image,
-      price,
+      make: formData.make,
+      model: formData.model,
+      year: Number(formData.year),
+      description : formData.description,
+      image : formData.image,
+      price: Number(formData.price),
     });
     if (carObject) {
       navigate("/");
@@ -27,13 +38,29 @@ const CreateCar = () => {
       <div className="car-form">
         <h1>Post a car</h1>
         <form onSubmit={createCar} action="/create/car" method="post">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="make">Make:</label>
           <input
             type="text"
-            id="name"
-            name="name"
+            id="make"
+            name="make"
             required
-            onChange={(ev) => setCarName(ev.target.value)}
+            onChange={(e) => handleInputChange(e)}
+          />
+          <label htmlFor="model">Model:</label>
+          <input
+            type="text"
+            id="model"
+            name="model"
+            required
+            onChange={(e) => handleInputChange(e)}
+          />
+          <label htmlFor="year">Year:</label>
+          <input
+            type="text"
+            id="year"
+            name="year"
+            required
+            onChange={(e) => handleInputChange(e)}
           />
           <label htmlFor="description">Description:</label>
           <input
@@ -41,7 +68,7 @@ const CreateCar = () => {
             id="description"
             name="description"
             required
-            onChange={(ev) => setDescription(ev.target.value)}
+            onChange={(e) => handleInputChange(e)}
           />
           <label htmlFor="image">Image URL:</label>
           <input
@@ -49,7 +76,7 @@ const CreateCar = () => {
             id="image"
             name="image"
             required
-            onChange={(ev) => setImage(ev.target.value)}
+            onChange={(e) => handleInputChange(e)}
           />
           <label htmlFor="price">Price:</label>
           <input
@@ -57,7 +84,7 @@ const CreateCar = () => {
             id="price"
             name="price"
             required
-            onChange={(ev) => setPrice(Number(ev.target.value))}
+            onChange={(e) => handleInputChange(e)}
           />
           <button type="submit">Post</button>
         </form>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { get, delete as delete_ } from "../utils/api";
 import EditModal from "./components/EditModal.jsx";
+import "./Details.css";
 
 const detailsPath = "/car/";
 const deletePath = "/car/";
@@ -30,22 +31,27 @@ const Details = () => {
   return (
     <div>
       {car ? (
-        <div className="car">
-          <img className="carImage" src={car.image} alt="Car Image"></img>
-          <div className="container">
-            <h4>
-              <b>Name: {car.name}</b>
-            </h4>
-            <p>Description: {car.description}</p>
-            <p>Price: {car.price}</p>
-            {car.owner == userId && (
-              <>
-                <button onClick={() => setModal(true)}>Edit</button>
-                <button onClick={(ev) => handleDelete(ev, car._id)}>
-                  Delete
-                </button>
-              </>
-            )}
+        <div className="car-card">
+          <img src={car.image} alt="Car Image"></img>
+          <div className="car-details">
+            <h2>{car.make + " " + car.model}</h2>
+            <p className="description">{car.description}</p>
+            <ul>
+              <li>
+                <strong>Year:</strong> {car.year}{" "}
+              </li>
+              <li>
+                <strong>Price:</strong> {car.price} BGN
+              </li>
+            </ul>
+          {car.owner == userId && (
+            <>
+              <button onClick={() => setModal(true)}>Edit</button>
+              <button onClick={(ev) => handleDelete(ev, car._id)}>
+                Delete
+              </button>
+            </>
+          )}
           </div>
         </div>
       ) : (

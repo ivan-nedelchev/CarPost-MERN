@@ -10,8 +10,10 @@ import {
   getCarsController,
   getCarController,
 } from "../controllers/car.js";
+// import { checkSession } from "../utils/checkLogin.js";
 
 export default (app) => {
+  // app.use(checkSession);
   app.post("/register", registerController);
   app.post("/login", loginController);
   app.get("/logout", logoutController);

@@ -10,7 +10,9 @@ export const createCarController = async (req, res) => {
   let user = JSON.parse(req.session.user);
   try {
     const newCar = {
-      name: req.body.name,
+      make: req.body.make,
+      model: req.body.model,
+      year: Number(req.body.year),
       description: req.body.description,
       image: req.body.image,
       price: Number(req.body.price),

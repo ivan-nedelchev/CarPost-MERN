@@ -31,10 +31,15 @@ export const getCarService = async (carId) => {
 
 export const deleteCarService = async (carId, requesterId) => {
   const [car, user] = await Promise.all([
-    await Car.findByIdAndUpdate(carId, {
-      isDeleted: true,
-      owner: requesterId,
-    }),
+    await Car.findOneAndUpdate(
+      {
+        _id: carId,
+        owner: requesterId,
+      },
+      {
+        isDeleted: true,
+      }
+    ),
     await User.findById(requesterId),
   ]);
   if (car == null || user == null) {
@@ -52,12 +57,14 @@ export const deleteCarService = async (carId, requesterId) => {
 };
 
 export const editCarService = async (carId, requesterId, updatedCarInfo) => {
-  let car = await Car.findById(carId);
-  if (car.owner == requesterId) {
-    return await Car.findByIdAndUpdate(
-      carId,
-      { ...updatedCarInfo },
-      { new: true }
-    );
-  }
+  return await Car.findOneAndUpdate(
+    {
+      _id: carId,
+      owner: requesterId,
+    },
+    {
+      ...updatedCarInfo,
+    },
+    { new: true }
+  );
 };

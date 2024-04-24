@@ -1,9 +1,17 @@
 import { Schema, Types, model } from "mongoose";
 const { ObjectId } = Types;
 const carSchema = new Schema({
-  name: {
+  make: {
     type: String,
     required: true,
+  },
+  model: {
+    type: String,
+    required: true,
+  },
+  year: {
+    type: Number,
+    min: 0,
   },
   description: {
     type: String,
