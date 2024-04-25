@@ -6,7 +6,6 @@ const path = "/car/";
 
 const CreateCar = () => {
   const navigate = useNavigate();
-  
   const [formData, setFormData] = useState({});
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -15,9 +14,6 @@ const CreateCar = () => {
       [name]: value,
     });
   };
-
-
-
   const createCar = async (ev) => {
     ev.preventDefault();
     console.log(formData);

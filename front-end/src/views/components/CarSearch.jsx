@@ -67,7 +67,7 @@ const CarSearch = ({ setCars }) => {
           </select>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Search</button>
       </form>
     </div>
   );
