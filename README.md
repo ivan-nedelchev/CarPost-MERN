@@ -1,16 +1,4 @@
 # CarPost-MERN
- 
-<!-- Home
-const [cars, setCars] = useState()
-useEffect() {
-    let carsArray = await fetch('/getCars')
-    setCars(carsArray)
-    cars.map( car => <carComponent car={car} />)
-
-}
-
-
-CreateCar
-let responseCar = dfdsafdsfds
-
-setCars(cars.push(responseCar)) -->
+RUN:
+To run this app you need to run "npm run dev" on both the backend and frontend folders.
+*app file structure will be fixed soon*
