@@ -14,7 +14,7 @@ const Register = ({ setAuthenticated }) => {
   const navigate = useNavigate();
   const saveInput = (ev) => {
     const inputName = ev.target.name;
-    const value = ev.target.value;
+    const value = (ev.target.value).trim();
     setFormData({
       ...formData,
       [inputName]: value,
@@ -38,7 +38,7 @@ const Register = ({ setAuthenticated }) => {
       errors.repassword = "Passwords don't match.";
     }
 
-    if (Object.keys(errors).length != 0) {
+    if (Object.keys(errors).length > 0) {
       //check for errors and display them
       setFormErrors({
         ...errors,

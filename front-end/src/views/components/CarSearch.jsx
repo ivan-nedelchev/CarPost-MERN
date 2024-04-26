@@ -58,12 +58,14 @@ const CarSearch = ({ setCars }) => {
             <option disabled value="">
               Select Model
             </option>
-            {models.length > 0 &&
+            {models?.length > 0 &&
               models.map((model) => (
                 <option key={model} value={model}>
                   {model}
                 </option>
-              ))}
+              ))
+
+            }
           </select>
         </div>
 
