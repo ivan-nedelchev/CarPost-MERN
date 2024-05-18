@@ -20,6 +20,7 @@ const CreateCar = () => {
     let carObject = await post(path, {
       make: formData.make,
       model: formData.model,
+      modification : formData.modification,
       year: Number(formData.year),
       description : formData.description,
       image : formData.image,
@@ -47,6 +48,14 @@ const CreateCar = () => {
             type="text"
             id="model"
             name="model"
+            required
+            onChange={(e) => handleInputChange(e)}
+          />
+          <label htmlFor="modification">Modification:</label>
+          <input
+            type="text"
+            id="modification"
+            name="modification"
             required
             onChange={(e) => handleInputChange(e)}
           />

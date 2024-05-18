@@ -34,7 +34,7 @@ const Details = () => {
         <div className="car-card">
           <img src={car.image} alt="Car Image"></img>
           <div className="car-details">
-            <h2>{car.make + " " + car.model}</h2>
+            <h2>{car.make + " " + car.model + " " + car.modification}</h2>
             <p className="description">{car.description}</p>
             <ul>
               <li>

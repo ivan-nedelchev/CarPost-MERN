@@ -8,15 +8,30 @@ const CarSearch = ({ setCars }) => {
   const [searchData, setSearchData] = useState({});
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setSearchData({
-      ...searchData,
-      [name]: value,
-    });
+    if(name == 'make') {
+      setSearchData({
+        ...searchData,
+        [name]: value,
+        model : ""
+      });
+    } else {
+
+      setSearchData({
+        ...searchData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let carsArray = await fetchCars(searchData);
+    let searchParams = Object.assign( {}, searchData)
+    for(const searchParam in searchData) {   // validate params
+      if(searchData[searchParam] == "") {
+        delete searchParams[searchParam]
+      }
+    }
+    const carsArray = await fetchCars(searchParams);
     setCars([...carsArray]);
   };
   return (
@@ -34,8 +49,8 @@ const CarSearch = ({ setCars }) => {
             name="make"
             defaultValue=""
           >
-            <option disabled value="">
-              Select Make
+            <option value="">
+             Make
             </option>
             {makesData.map((make) => (
               <option key={make} value={make}>
@@ -55,8 +70,8 @@ const CarSearch = ({ setCars }) => {
             name="model"
             defaultValue=""
           >
-            <option disabled value="">
-              Select Model
+            <option value="">
+             Model
             </option>
             {models?.length > 0 &&
               models.map((model) => (

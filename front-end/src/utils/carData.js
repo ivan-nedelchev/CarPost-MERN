@@ -10,5 +10,4 @@ export const modelsData = {
     "BMW": ["1 Series", "2 Series", "3 Series", "4 Series", "5 Series"],
     "Mercedes-Benz": ["A Class", "CLA Class", "C Class", "E Class"],
     "Porsche" : [ "356 Speedster","911","918 Spyder","924","928","935","944","956","968","991","993","996","Boxster","Carrera","Cayenne","Cayman","Macan","Panamera","Taycan"],
-    "VW" : []
 }

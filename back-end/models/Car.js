@@ -9,6 +9,10 @@ const carSchema = new Schema({
     type: String,
     required: true,
   },
+  modification: {
+    type: String,
+    required: true,
+  },
   year: {
     type: Number,
     min: 0,

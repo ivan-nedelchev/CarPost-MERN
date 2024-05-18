@@ -12,6 +12,7 @@ export const createCarController = async (req, res) => {
     const newCar = {
       make: req.body.make,
       model: req.body.model,
+      modification : req.body.modification,
       year: Number(req.body.year),
       description: req.body.description,
       image: req.body.image,
