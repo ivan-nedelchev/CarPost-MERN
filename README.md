@@ -9,8 +9,9 @@ Front-end - React
 Back-end - Node.JS, Mongoose, Express-session
 
 Functionality:
-> User registration
-> Add car post
-> Update car post info
-> Delete car post
+* User registration
+* Add car post
+* Update car post info
+* Delete car post
+
 ![Project Home page](https://i.imgur.com/6X5A7FA.png)
