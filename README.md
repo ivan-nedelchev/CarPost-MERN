@@ -8,4 +8,4 @@ Technologies used:
 Front-end - React
 Back-end - Node.JS, Mongoose, Express-session
 
-![Project Home page](https://i.ibb.co/Bwdq7gB/Screenshot-3.png)
+![Project Home page](https://i.imgur.com/MzUoBmY.png)
