@@ -8,4 +8,9 @@ Technologies used:
 Front-end - React
 Back-end - Node.JS, Mongoose, Express-session
 
-![Project Home page](https://i.imgur.com/MzUoBmY.png)
+Functionality:
+> User registration
+> Add car post
+> Update car post info
+> Delete car post
+![Project Home page](https://i.imgur.com/6X5A7FA.png)
