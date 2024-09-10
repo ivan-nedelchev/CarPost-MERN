@@ -45,6 +45,17 @@ const EditModal = ({ toggleModal, car }) => {
           defaultValue={car.model}
           onChange={handleInputChange}
         />
+
+<label htmlFor="modification">Modification:</label>
+        <input
+          type="text"
+          id="modification"
+          name="modification"
+          required
+          defaultValue={car.modification}
+          onChange={handleInputChange}
+        />
+        
         <label htmlFor="year">Year:</label>
         <input
           type="text"

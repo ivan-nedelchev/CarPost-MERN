@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import "./CarCard.css"
+
 const path = "/details/";
 const CarCard = ({ car }) => {
   const navigate = useNavigate();
@@ -9,13 +11,13 @@ const CarCard = ({ car }) => {
   }
   return (
     <>
-      <div className="car" key={car._id}>
+      <div className="car card" key={car._id}>
         <img className="carImage" src={car.image} alt="Avatar"></img>
-        <div className="container">
+        <div className="carInfo">
           <h4>
-            <b>{car.name}</b>
+            <b>{car.make + " " + car.modification}</b>
           </h4>
-          <p>{car.price}</p>
+          <p>{car.price} лв.</p>
           <button onClick={(ev) => handleDetailsClick(ev, car._id)}>
             Details
           </button>

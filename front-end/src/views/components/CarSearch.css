@@ -1,5 +1,5 @@
 .container {
-  max-width: 400px;
+  max-width: 25em;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -7,3 +7,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.firstOption {
+  color: #828282
+}

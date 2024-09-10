@@ -3,7 +3,7 @@ import { useState } from "react";
 import { makesData, modelsData } from "../../utils/carData";
 import "./CarSearch.css";
 import { fetchCars } from "../../utils/cars";
-const CarSearch = ({ setCars }) => {
+const CarSearch = ({ className, setCars }) => {
   const [models, setModels] = useState([]);
   const [searchData, setSearchData] = useState({});
   const handleInputChange = (e) => {
@@ -31,12 +31,14 @@ const CarSearch = ({ setCars }) => {
         delete searchParams[searchParam]
       }
     }
+
     const carsArray = await fetchCars(searchParams);
+    console.log(carsArray);
     setCars([...carsArray]);
   };
   return (
     <div className="container">
-      <h2>Car Selection Form</h2>
+      <h2>Car search</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="make">Make:</label>
         <div className="dropdown">
@@ -49,8 +51,8 @@ const CarSearch = ({ setCars }) => {
             name="make"
             defaultValue=""
           >
-            <option value="">
-             Make
+            <option className="firstOption" value="">
+             Any
             </option>
             {makesData.map((make) => (
               <option key={make} value={make}>
@@ -70,8 +72,8 @@ const CarSearch = ({ setCars }) => {
             name="model"
             defaultValue=""
           >
-            <option value="">
-             Model
+            <option className="firstOption" value="">
+             Any
             </option>
             {models?.length > 0 &&
               models.map((model) => (
