@@ -11,7 +11,7 @@ const CarCard = ({ car }) => {
   }
   return (
     <>
-      <div className="car card" key={car._id}>
+      <div className="car card" key={car._id} onClick={(ev) => handleDetailsClick(ev, car._id)}>
         <img className="carImage" src={car.image} alt="Avatar"></img>
         <div className="carInfo">
           <h4>

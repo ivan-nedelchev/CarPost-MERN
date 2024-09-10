@@ -6,14 +6,15 @@
   width: 200px;  
   padding: 10px;
   box-sizing: border-box;
+  cursor: pointer; 
 }
 
 .carImage {
-  width: 12em;  /* Fixed width */
-  height: 10em; /* Fixed height */
-  object-fit: cover; /* Ensures the image covers the entire area */
-  border-radius: 2px; /* Adds rounded corners */
-  background-color: #f0f0f0; /* Fallback background color */
+  width: 12em; 
+  height: 10em; 
+  object-fit: cover; 
+  border-radius: 2px; 
+  background-color: #f0f0f0; 
   display: block;
 }
 
@@ -29,7 +30,6 @@
 .carInfo p {
   margin: 0;
   padding: 5px 0;
-
   padding-bottom: 10px; 
   align-self: flex-start;
   margin-top: auto; /
