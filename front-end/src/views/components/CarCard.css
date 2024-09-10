@@ -4,15 +4,17 @@
   justify-content: space-between;
   height: 300px; 
   width: 200px;  
-  border: 1px solid #ccc;
   padding: 10px;
   box-sizing: border-box;
 }
 
 .carImage {
-  width: 100%;
-  height: 150px; 
-  object-fit: cover; 
+  width: 12em;  /* Fixed width */
+  height: 10em; /* Fixed height */
+  object-fit: cover; /* Ensures the image covers the entire area */
+  border-radius: 2px; /* Adds rounded corners */
+  background-color: #f0f0f0; /* Fallback background color */
+  display: block;
 }
 
 .carInfo {
@@ -27,6 +29,10 @@
 .carInfo p {
   margin: 0;
   padding: 5px 0;
+
+  padding-bottom: 10px; 
+  align-self: flex-start;
+  margin-top: auto; /
 }
 
 .carInfo button {

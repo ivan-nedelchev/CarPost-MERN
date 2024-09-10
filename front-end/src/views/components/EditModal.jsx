@@ -48,6 +48,7 @@ const EditModal = ({ toggleModal, car }) => {
 
 <label htmlFor="modification">Modification:</label>
         <input
+        maxlength="15"
           type="text"
           id="modification"
           name="modification"
