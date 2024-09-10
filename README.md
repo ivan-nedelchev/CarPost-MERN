@@ -9,7 +9,7 @@ Front-end - React
 Back-end - Node.JS, Mongoose, Express-session
 
 Functionality:
-* User registration
+* User registration (using cookies for session)
 * Add car post
 * Update car post info
 * Delete car post
