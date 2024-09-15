@@ -11,3 +11,11 @@ export const modelsData = {
     "Mercedes-Benz": ["A Class", "CLA Class", "C Class", "E Class"],
     "Porsche" : [ "356 Speedster","911","918 Spyder","924","928","935","944","956","968","991","993","996","Boxster","Carrera","Cayenne","Cayman","Macan","Panamera","Taycan"],
 }
+export const featuresData = {
+    safety: ["Airbags", "ABS", "Traction Control"],
+    comfort: ["Air Conditioning", "Heated Seats"],
+    protection: ["Alarm", "Central locking"],
+    exterior: ["wide bumper", "alloy wheels"],
+    interior: [ "Leather saloon"],
+    others: ["4x4", "7 Seats"]
+}

@@ -58,12 +58,7 @@ const carSchema = new Schema({
     required: true,
   },
   features: {
-    type: [
-      {
-        name: { type: String, required: true },
-        values: { type: [String], required: true }
-      }
-    ],
+    type: Object,
     required: true,
   },
   image: {

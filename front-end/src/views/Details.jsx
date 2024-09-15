@@ -19,6 +19,7 @@ const Details = () => {
   useEffect(() => {
     let getCar = async () => {
       let carDetails = await get(detailsPath + carId);
+      console.log(carDetails);
       setCar({ ...carDetails });
     };
     getCar();
