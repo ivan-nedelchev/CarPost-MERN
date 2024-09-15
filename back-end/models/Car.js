@@ -13,12 +13,57 @@ const carSchema = new Schema({
     type: String,
     required: true,
   },
+  fuel: {
+    type: String,
+    required: true,
+  },
+  capacity: {
+    type: Number,
+    required: true,
+  },
+  power: {
+    type: Number,
+    required: true,
+  },
+  euroStandard: {
+    type: Number,
+    required: true,
+  },
+  transmission: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
   year: {
+    type: Number,
+    min: 0,
+  },
+  mileage: {
     type: Number,
     min: 0,
   },
   description: {
     type: String,
+    required: true,
+  },
+  color: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  features: {
+    type: [
+      {
+        name: { type: String, required: true },
+        values: { type: [String], required: true }
+      }
+    ],
     required: true,
   },
   image: {
