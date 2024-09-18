@@ -1,27 +1,29 @@
-import PropTypes from "prop-types";
-import { useState } from "react";
-import "./Login.css";
-import { saveUser } from "../controllers/auth";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { post } from "../utils/api";
+import PropTypes from "prop-types";
+import "./Login.css";
 
-const Login = ({ setAuthenticated }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [invalidLogin, setInvalidLogin] = useState(false);
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+
   const loginHandler = async (event) => {
     event.preventDefault();
-    let res = await post("/login", { username, password });
-    if (res.status != 401 && res.username) {
-      saveUser(res);
-      setAuthenticated(true);
-      console.log("Successful login");
+    try {
+      await login(username, password);
       navigate("/");
-    } else {
+    } catch (error) {
+      console.log(error);
+
       setInvalidLogin(true);
     }
   };
+
   return (
     <>
       <div className="loginForm">
@@ -55,9 +57,6 @@ const Login = ({ setAuthenticated }) => {
       </div>
     </>
   );
-};
-Login.propTypes = {
-  setAuthenticated: PropTypes.func.isRequired,
 };
 
 export default Login;

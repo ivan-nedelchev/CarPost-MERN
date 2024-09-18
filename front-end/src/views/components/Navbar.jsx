@@ -1,17 +1,17 @@
-import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css";
-import { logoutUser } from "../../controllers/auth";
 
-const Navbar = ({ authenticated, setAuthenticated }) => {
+const Navbar = () => {
+  const { authenticated, logout } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  async function handleLogout(setAuthenticated) {
-    await logoutUser(setAuthenticated);
-    navigate("/");
+  async function handleLogout() {
+    await logout();
   }
+
   return (
     <nav>
       <Link to="/" className="title">
@@ -37,9 +37,7 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
               <NavLink to="/create/car">Post a Car</NavLink>
             </li>
             <li>
-              <NavLink onClick={() => handleLogout(setAuthenticated)}>
-                Logout
-              </NavLink>
+              <NavLink onClick={() => handleLogout()}>Logout</NavLink>
             </li>
           </>
         ) : (
@@ -57,9 +55,4 @@ const Navbar = ({ authenticated, setAuthenticated }) => {
     </nav>
   );
 };
-Navbar.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
-  setAuthenticated: PropTypes.func.isRequired,
-};
-
 export default Navbar;

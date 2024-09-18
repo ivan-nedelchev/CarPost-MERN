@@ -1,62 +1,59 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
 import "./Register.css";
 import { post } from "../utils/api";
 import { useNavigate } from "react-router-dom";
-import { saveUser } from "../controllers/auth";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { testRegister } from "../controllers/auth";
+
 const passwordRegex = new RegExp(
   /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$/
 );
 
-const Register = ({ setAuthenticated }) => {
-  const [formData, setFormData] = useState({});
-  const [formErrors, setFormErrors] = useState({});
+const Register = () => {
+  const { register } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState({});
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    repassword: "",
+  });
+
   const saveInput = (ev) => {
     const inputName = ev.target.name;
-    const value = (ev.target.value).trim();
+    const value = ev.target.value.trim();
     setFormData({
       ...formData,
       [inputName]: value,
     });
   };
-  const registerUser = async (ev) => {
-    ev.preventDefault();
-    const errors = {};
 
-    if (formData.username.length < 5) {
-      //check username for minimum length
-      errors.username = "Username should have at least 5 characters.";
-    }
-    if (!passwordRegex.test(formData.password)) {
-      //check password with regex
-      errors.password =
-        "Password must contain at least one number, one alphabet, one symbol, and be at least 8 characters long.";
-    }
-    if (formData.password != formData.repassword) {
-      //check if passwords match
-      errors.repassword = "Passwords don't match.";
-    }
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    const errors = testRegister(formData);
 
     if (Object.keys(errors).length > 0) {
-      //check for errors and display them
+      //checks if the register information matches the criteria
       setFormErrors({
         ...errors,
       });
-    } else {
-      let userFile = await post("/register", { ...formData });
-      if (userFile) {
-        saveUser(userFile);
-        setAuthenticated(true);
-        navigate("/");
-      }
+      return;
+    }
+
+    try {
+      await register(formData);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
     }
   };
+
   return (
     <>
       <div className="registerForm">
         <h3 style={{ padding: "20px" }}>Register Page</h3>
-        <form onSubmit={registerUser} action="/register" method="post">
+        <form onSubmit={handleRegister} action="/register" method="post">
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -97,7 +94,5 @@ const Register = ({ setAuthenticated }) => {
     </>
   );
 };
-Register.propTypes = {
-  setAuthenticated: PropTypes.func.isRequired,
-};
+
 export default Register;
