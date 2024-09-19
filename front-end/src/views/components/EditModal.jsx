@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Modal from "./Modal";
-import "./EditModal.css";
 import { put } from "../../utils/api";
-const path = "/car/";
+import "./EditModal.css";
 
+const path = "/car/";
 const EditModal = ({ toggleModal, car }) => {
   const [formData, setFormData] = useState({});
   const handleInputChange = (e) => {
@@ -45,10 +45,9 @@ const EditModal = ({ toggleModal, car }) => {
           defaultValue={car.model}
           onChange={handleInputChange}
         />
-
-<label htmlFor="modification">Modification:</label>
+        <label htmlFor="modification">Modification:</label>
         <input
-        maxlength="15"
+          maxlength="15"
           type="text"
           id="modification"
           name="modification"
@@ -56,7 +55,6 @@ const EditModal = ({ toggleModal, car }) => {
           defaultValue={car.modification}
           onChange={handleInputChange}
         />
-        
         <label htmlFor="year">Year:</label>
         <input
           type="text"

@@ -1,21 +1,20 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { makesData, modelsData } from "../../utils/carData";
-import "./CarSearch.css";
 import { fetchCars } from "../../utils/cars";
+import "./CarSearch.css";
 const CarSearch = ({ className, setCars }) => {
   const [models, setModels] = useState([]);
   const [searchData, setSearchData] = useState({});
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if(name == 'make') {
+    if (name == "make") {
       setSearchData({
         ...searchData,
         [name]: value,
-        model : ""
+        model: "",
       });
     } else {
-
       setSearchData({
         ...searchData,
         [name]: value,
@@ -25,10 +24,11 @@ const CarSearch = ({ className, setCars }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let searchParams = Object.assign( {}, searchData)
-    for(const searchParam in searchData) {   // validate params
-      if(searchData[searchParam] == "") {
-        delete searchParams[searchParam]
+    let searchParams = Object.assign({}, searchData);
+    for (const searchParam in searchData) {
+      // validate params
+      if (searchData[searchParam] == "") {
+        delete searchParams[searchParam];
       }
     }
 
@@ -52,7 +52,7 @@ const CarSearch = ({ className, setCars }) => {
             defaultValue=""
           >
             <option className="firstOption" value="">
-             Any
+              Any
             </option>
             {makesData.map((make) => (
               <option key={make} value={make}>
@@ -73,16 +73,14 @@ const CarSearch = ({ className, setCars }) => {
             defaultValue=""
           >
             <option className="firstOption" value="">
-             Any
+              Any
             </option>
             {models?.length > 0 &&
               models.map((model) => (
                 <option key={model} value={model}>
                   {model}
                 </option>
-              ))
-
-            }
+              ))}
           </select>
         </div>
 

@@ -1,14 +1,8 @@
-import PropTypes from "prop-types";
-import "./Register.css";
-import { post } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { testRegister } from "../controllers/auth";
-
-const passwordRegex = new RegExp(
-  /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$/
-);
+import "./Register.css";
 
 const Register = () => {
   const { register } = useContext(AuthContext);
@@ -19,7 +13,6 @@ const Register = () => {
     password: "",
     repassword: "",
   });
-
   const saveInput = (ev) => {
     const inputName = ev.target.name;
     const value = ev.target.value.trim();
@@ -28,11 +21,9 @@ const Register = () => {
       [inputName]: value,
     });
   };
-
   const handleRegister = async (event) => {
     event.preventDefault();
     const errors = testRegister(formData);
-
     if (Object.keys(errors).length > 0) {
       //checks if the register information matches the criteria
       setFormErrors({
@@ -40,7 +31,6 @@ const Register = () => {
       });
       return;
     }
-
     try {
       await register(formData);
       navigate("/");
@@ -48,7 +38,6 @@ const Register = () => {
       console.log(error);
     }
   };
-
   return (
     <>
       <div className="registerForm">
