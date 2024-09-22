@@ -6,8 +6,8 @@ import "./Home.css";
 const Home = () => {
   const [cars, setCars] = useState([]);
   useEffect(() => {
-    let getCars = async () => {
-      let carsArray = await fetchCars();
+    const getCars = async () => {
+      const carsArray = await fetchCars();
       setCars([...carsArray]);
     };
     getCars();

@@ -1,0 +1,39 @@
+.underline-btn {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 5px;
+  outline: none;
+  color: #ff7a00;
+}
+
+.underline-btn::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 4px;
+  background-color: #ff7700; /* Set the underline color */
+  left: 2px;
+  bottom: -3px;
+  transition: width 0.25s ease-in-out; /* Control the speed and smoothness */
+}
+
+.underline-btn:hover::after,
+.underline-btn.active::after {
+  /* Makes the underline appear on hover and active state */
+  width: 95%;
+}
+
+.title {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  text-decoration: none;
+  color: #38409f;
+  font-size: 3rem;
+  margin: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
