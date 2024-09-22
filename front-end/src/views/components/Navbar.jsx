@@ -44,7 +44,7 @@ const Navbar = () => {
               <NavLink to="/create/car">
                 {({ isActive }) => (
                   <Button classes={`underline-btn ${isActive ? "active" : ""}`}>
-                    Post a Car
+                    Add Listing
                   </Button>
                 )}
               </NavLink>

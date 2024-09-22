@@ -1,17 +1,11 @@
 import PropTypes from "prop-types";
 import "./Modal.css";
-const Modal = ({ children, toggleModal, headerText }) => {
+const Modal = ({ children, toggleModal }) => {
   return (
     <>
       <div className="modal">
         <div onClick={toggleModal} className="overlay"></div>
-        <div className="modal-content">
-          <h2>{headerText}</h2>
-          {children}
-          <button className="close-modal" onClick={toggleModal}>
-            CLOSE
-          </button>
-        </div>
+        <div className="modal-content">{children}</div>
       </div>
     </>
   );

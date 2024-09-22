@@ -3,7 +3,7 @@ import { useState } from "react";
 import { makesData, modelsData } from "../../utils/carData";
 import { fetchCars } from "../../utils/cars";
 import "./CarSearch.css";
-const CarSearch = ({ className, setCars }) => {
+const CarSearch = ({ setCars }) => {
   const [models, setModels] = useState([]);
   const [searchData, setSearchData] = useState({});
   const handleInputChange = (e) => {

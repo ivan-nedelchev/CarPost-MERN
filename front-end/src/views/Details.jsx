@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { get, delete as delete_ } from "../utils/api";
+import { get, del } from "../utils/api";
 import EditModal from "./components/EditModal.jsx";
 import "./Details.css";
 
@@ -26,7 +26,7 @@ const Details = () => {
   }, [carId, modal]);
   async function handleDelete(ev, carId) {
     ev.preventDefault();
-    await delete_(deletePath + carId);
+    await del(deletePath + carId);
     navigate("/");
   }
   return (
@@ -45,14 +45,14 @@ const Details = () => {
                 <strong>Price:</strong> {car.price} BGN
               </li>
             </ul>
-          {car.owner == userId && (
-            <>
-              <button onClick={() => setModal(true)}>Edit</button>
-              <button onClick={(ev) => handleDelete(ev, car._id)}>
-                Delete
-              </button>
-            </>
-          )}
+            {car.owner == userId && (
+              <>
+                <button onClick={() => setModal(true)}>Edit</button>
+                <button onClick={(ev) => handleDelete(ev, car._id)}>
+                  Delete
+                </button>
+              </>
+            )}
           </div>
         </div>
       ) : (

@@ -26,4 +26,4 @@ let put = (path, data) => request("PUT", path, data);
 let del = (path, data) => request("DELETE", path, data);
 let post = (path, data) => request("POST", path, data);
 
-export { get, put, del as delete, post };
+export { get, put, del, post };

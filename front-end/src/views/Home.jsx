@@ -13,10 +13,16 @@ const Home = () => {
     getCars();
   }, []);
   return (
-    <div className="home-container">
-      <CarSearch setCars={setCars}></CarSearch>
+    <>
+      <div className="search-container">
+        <h1 className="home-message">
+          Your
+          <span className="orange-text"> dream car</span> is waiting for you.
+        </h1>
+        <CarSearch setCars={setCars}></CarSearch>
+      </div>
       <CarList cars={cars} />
-    </div>
+    </>
   );
 };
 export default Home;
