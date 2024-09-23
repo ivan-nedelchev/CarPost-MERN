@@ -14,14 +14,22 @@ const Home = () => {
   }, []);
   return (
     <>
-      <div className="search-container">
-        <h1 className="home-message">
-          Your
-          <span className="orange-text"> dream car</span> is waiting for you.
-        </h1>
-        <CarSearch setCars={setCars}></CarSearch>
+      <div className="home-container">
+        <div className="picture-container">
+          <div className="search-section">
+            <h1 className="home-message">
+              Your
+              <span className="orange-text"> dream car </span>
+              is waiting for you.
+            </h1>
+            <CarSearch setCars={setCars}></CarSearch>
+          </div>
+        </div>
+        <div className="newcars-container">
+          <h3>Newest car listings</h3>
+          <CarList cars={cars} />
+        </div>
       </div>
-      <CarList cars={cars} />
     </>
   );
 };

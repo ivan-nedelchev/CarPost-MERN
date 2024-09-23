@@ -2,37 +2,36 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 300px; 
-  width: 200px;  
+  width: 20rem;
   padding: 10px;
   box-sizing: border-box;
-  cursor: pointer; 
+  cursor: pointer;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .carImage {
-  width: 12em; 
-  height: 10em; 
-  object-fit: cover; 
-  border-radius: 2px; 
-  background-color: #f0f0f0; 
+  width: auto;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 2px;
+  background-color: #f0f0f0;
   display: block;
 }
 
 .carInfo {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-  padding-top: 10px;
+  justify-content: flex-start;
 }
 
 .carInfo h4,
 .carInfo p {
   margin: 0;
   padding: 5px 0;
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
   align-self: flex-start;
-  margin-top: auto; /
+  margin-top: auto;
 }
 
 .carInfo button {

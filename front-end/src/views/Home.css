@@ -1,8 +1,4 @@
-.search-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.picture-container {
   position: relative;
   overflow: hidden;
   height: 50vh;
@@ -16,17 +12,22 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  margin-inline-start: auto;
 }
 
 .home-message {
   position: relative;
-  z-index: 2;
-  padding: 20px;
   color: white;
   text-align: center;
-  left: -20%;
+  padding-bottom: 2rem;
 }
-
+.search-section {
+  margin: 3% 10% 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
 .orange-text {
   color: #ff7a00;
 }

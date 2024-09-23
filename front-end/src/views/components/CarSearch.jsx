@@ -3,6 +3,7 @@ import { useState } from "react";
 import { makesData, modelsData } from "../../utils/carData";
 import { fetchCars } from "../../utils/cars";
 import "./CarSearch.css";
+import Button from "./Button";
 const CarSearch = ({ setCars }) => {
   const [models, setModels] = useState([]);
   const [searchData, setSearchData] = useState({});
@@ -37,7 +38,7 @@ const CarSearch = ({ setCars }) => {
     setCars([...carsArray]);
   };
   return (
-    <div className="container">
+    <div className="search-container">
       <h2>Car search</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="make">Make:</label>
@@ -83,8 +84,7 @@ const CarSearch = ({ setCars }) => {
               ))}
           </select>
         </div>
-
-        <button type="submit">Search</button>
+        <Button type="submit">Search</Button>
       </form>
     </div>
   );
