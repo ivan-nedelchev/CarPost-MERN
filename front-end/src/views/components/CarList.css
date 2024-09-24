@@ -3,14 +3,14 @@ ul {
 }
 
 .cars {
-  background-color: rgb(56, 64, 159, 0.7);
+  background-color: rgba(147, 147, 147, 0.209);
   border-radius: 10px;
   justify-content: center;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Allows cards to wrap if necessary */
-  max-width: 80%; /* Limit the container width to 50% of the page */
-  margin: 0 auto; /* Center the container */
+  flex-wrap: wrap; 
+  max-width: 100%; 
+  margin: 0 auto;
   padding-top: 2rem;
   gap: 50px;
 }

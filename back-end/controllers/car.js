@@ -42,7 +42,7 @@ export const createCarController = async (req, res) => {
   }
 };
 
-export const deleteCarController = async (req, res) => {
+export const deleteCarController = async (req, res) => { 
   let requesterId = JSON.parse(req.session.user).id;
   const carId = req.params.id;
   let car = await deleteCarService(carId, requesterId);

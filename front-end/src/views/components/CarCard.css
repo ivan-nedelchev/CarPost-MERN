@@ -11,7 +11,7 @@
 }
 
 .carImage {
-  width: auto;
+  width: 17em;
   height: 12rem;
   object-fit: cover;
   border-radius: 2px;

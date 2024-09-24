@@ -5,6 +5,7 @@ nav {
   background-color: #ffffff;
   position: sticky;
   top: 0;
+  border: red 2px solid
 }
 
 nav ul {

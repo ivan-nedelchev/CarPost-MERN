@@ -14,7 +14,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav>
+    <nav className="container">
       <Link to="/">
         <Button classes="title">CarPost</Button>
       </Link>

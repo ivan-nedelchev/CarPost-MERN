@@ -14,8 +14,7 @@ const Home = () => {
   }, []);
   return (
     <>
-      <div className="home-container">
-        <div className="picture-container">
+        <div className="picture-container container">
           <div className="search-section">
             <h1 className="home-message">
               Your
@@ -25,11 +24,10 @@ const Home = () => {
             <CarSearch setCars={setCars}></CarSearch>
           </div>
         </div>
-        <div className="newcars-container">
+        <div className="newcars-container container">
           <h3>Newest car listings</h3>
           <CarList cars={cars} />
         </div>
-      </div>
     </>
   );
 };
