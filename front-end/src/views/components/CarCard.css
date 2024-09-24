@@ -22,10 +22,17 @@
 }
 
 .carInfo {
-  display: flex;
   margin: auto;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 20px 20px;
+}
+.wide {
+  margin: auto;
+  text-align: center;
+  grid-column: span 2; /* This item spans 2 columns */
+  background-color: lightcoral;
 }
 
 .carInfo h4,
@@ -51,13 +58,15 @@
     height: 8rem;
   }
 }
-
-@media (max-width: 1536px) {
+@media (max-width: 640px) {
+  .hidden-car {
+    display: none;
+  }
   .car {
-    width: 12em;
+    width: 16em;
   }
   .carImage {
-    width: 11em;
-    height: 8rem;
+    width: 15em;
+    height: 10rem;
   }
 }

@@ -5,15 +5,17 @@ import "./CarList.css";
 const CarList = ({ cars }) => {
   return (
     <>
-      <ul className="cars">
-        {cars.length > 0 ? (
-          cars.map((car) => <CarCard car={car} />)
-        ) : (
-          <>
-            <h2>No cars to list. Add the first one!</h2>
-          </>
-        )}
-      </ul>
+      <div className="newcars-container container">
+        <ul className="cars">
+          {cars.length > 0 ? (
+            cars.map((car, index) => <CarCard index={index} car={car} />)
+          ) : (
+            <>
+              <h2>No cars to list. Add the first one!</h2>
+            </>
+          )}
+        </ul>
+      </div>
     </>
   );
 };
