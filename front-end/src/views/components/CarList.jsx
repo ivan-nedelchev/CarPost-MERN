@@ -7,11 +7,7 @@ const CarList = ({ cars }) => {
     <>
       <ul className="cars">
         {cars.length > 0 ? (
-          cars.map((car) => (
-            <li key={car._id}>
-              <CarCard car={car} />
-            </li>
-          ))
+          cars.map((car) => <CarCard car={car} />)
         ) : (
           <>
             <h2>No cars to list. Add the first one!</h2>

@@ -12,7 +12,7 @@ const CarCard = ({ car }) => {
   }
   return (
     <>
-      <div
+      <li
         className="car card"
         key={car._id}
         onClick={(ev) => handleDetailsClick(ev, car._id)}
@@ -27,7 +27,7 @@ const CarCard = ({ car }) => {
             Details
           </Button>
         </div>
-      </div>
+      </li>
     </>
   );
 };

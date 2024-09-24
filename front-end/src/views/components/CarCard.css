@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 20rem;
-  padding: 10px;
+  width: 18em;
   box-sizing: border-box;
   cursor: pointer;
   background-color: white;
   border-radius: 5px;
+  border: solid green 1px;
+  margin: auto;
 }
 
 .carImage {
@@ -17,10 +18,12 @@
   border-radius: 2px;
   background-color: #f0f0f0;
   display: block;
+  margin: auto;
 }
 
 .carInfo {
   display: flex;
+  margin: auto;
   flex-direction: column;
   justify-content: flex-start;
 }
@@ -35,6 +38,26 @@
 }
 
 .carInfo button {
-  align-self: flex-start;
+  align-self: center;
   margin-top: auto;
+}
+
+@media (max-width: 1536px) {
+  .car {
+    width: 12em;
+  }
+  .carImage {
+    width: 11em;
+    height: 8rem;
+  }
+}
+
+@media (max-width: 1536px) {
+  .car {
+    width: 12em;
+  }
+  .carImage {
+    width: 11em;
+    height: 8rem;
+  }
 }

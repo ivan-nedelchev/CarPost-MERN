@@ -5,12 +5,39 @@ ul {
 .cars {
   background-color: rgba(147, 147, 147, 0.209);
   border-radius: 10px;
-  justify-content: center;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; 
-  max-width: 100%; 
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: ". . . .";
   padding-top: 2rem;
-  gap: 50px;
+}
+
+@media (max-width: 1536px) {
+  .cars {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cars {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px 20px;
+    grid-template-areas:
+      ". ."
+      ". .";
+  }
+}
+
+@media (max-width: 640px) {
+  .cars {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      "."
+      "."
+      "."
+      ".";
+  }
 }
