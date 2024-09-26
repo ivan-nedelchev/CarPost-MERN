@@ -3,19 +3,30 @@ ul {
 }
 
 .cars {
-  background-color: rgba(147, 147, 147, 0.209);
+  background-color: rgba(34, 52, 152, 0.209);
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-template-areas: ". . . .";
   padding-top: 2rem;
+  max-width: 100%;
 }
 
 @media (max-width: 1536px) {
   .cars {
     max-width: 80%;
     margin: auto;
+  }
+}
+@media (max-width: 1377px) {
+  .cars {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 50px 20px;
+    grid-template-areas:
+      ". ."
+      ". .";
   }
 }
 

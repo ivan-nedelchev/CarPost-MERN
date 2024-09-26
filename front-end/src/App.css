@@ -1,23 +1,11 @@
-/* label {
-  display: block;
-  margin-bottom: 1vh;
-  margin-top: 1vh;
+.container {
+  width: 80%; /* The container takes up 80% of the parent's width */
+  margin: 0 auto; /* Centers the container */
 }
-
-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6" /></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-} */
+.App {
+  background: rgba(255, 255, 255, 0);
+}
+/* 
 .container {
   width: 100%;
   margin-left: auto;
@@ -27,44 +15,43 @@ select {
 }
 
 /* xs */
-@media (min-width: 475px) {
+/* @media (min-width: 475px) {
   .container {
     max-width: 475px;
   }
-}
+} */
 
 /* sm */
-@media (min-width: 640px) {
+/* @media (min-width: 640px) {
   .container {
     max-width: 640px;
   }
-}
+} */
 
 /* md */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .container {
     max-width: 768px;
   }
-}
+} */
 
-/* lg */
+/* lg
 @media (min-width: 1024px) {
   .container {
     max-width: 1024px;
   }
-}
+} */
 
-/* xL */
+/* xL
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
   }
-}
-
+} */
 
 /* 2xL */
-@media (min-width: 1536px) {
+/* @media (min-width: 1536px) {
   .container {
     max-width: 1536px;
   }
-}
+} */

@@ -10,7 +10,7 @@ const CarCard = ({ car, index }) => {
     ev.preventDefault();
     navigate(path + id);
   }
-  const classes = index <= 1 ? "car card" : "hidden-car car card";
+  const classes = index <= 1 ? "car card" : "hidden-car car card"; //hidden-car class for cars above 2 for responsiveness
 
   return (
     <>

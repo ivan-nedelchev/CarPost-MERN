@@ -13,6 +13,7 @@
   background-position: center;
   background-repeat: no-repeat;
   margin-inline-start: auto;
+  border-radius: 0.5em;
 }
 
 .home-message {

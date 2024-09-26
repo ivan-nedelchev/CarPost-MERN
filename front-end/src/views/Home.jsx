@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CarList from "./components/CarList";
 import { fetchCars } from "../utils/cars";
 import CarSearch from "./components/CarSearch";
+import NewCarsMsg from "./components/NewCarsMsg";
 import "./Home.css";
 const Home = () => {
   const [cars, setCars] = useState([]);
@@ -15,7 +16,7 @@ const Home = () => {
   return (
     <>
       <CarSearch setCars={setCars}></CarSearch>
-      <h3>Newest car listings</h3>
+      <NewCarsMsg></NewCarsMsg>
       <CarList cars={cars} />
     </>
   );
