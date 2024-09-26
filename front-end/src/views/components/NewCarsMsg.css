@@ -1,6 +1,6 @@
 .cars-msg {
   text-align: center;
-  color: rgb(84, 84, 84);
+  color: rgba(0, 0, 0, 0.713);
   height: 30vh;
   display: grid;
   grid-template-columns: 1fr;
@@ -23,7 +23,7 @@
   grid-area: bounce-arrow;
   max-width: 5vh;
   position: relative;
-  animation: bounce 6s infinite;
+  animation: bounce 5s infinite;
 }
 
 @keyframes bounce {
@@ -31,13 +31,13 @@
     transform: translateY(0);
   }
   25% {
-    transform: translateY(-20%);
+    transform: translateY(30%);
   }
   50% {
     transform: translateY(0);
   }
   75% {
-    transform: translateY(-20%);
+    transform: translateY(20%);
   }
   100% {
     transform: translateY(0);
