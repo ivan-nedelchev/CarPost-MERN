@@ -15,18 +15,20 @@ const Navbar = () => {
 
   return (
     <nav className="container">
-      <Link to="/">
-        <Button classes="title">CarPost</Button>
-      </Link>
-      <div
-        className="menu"
-        onClick={() => {
-          setMenuOpen(!menuOpen);
-        }}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
+      <div className="mobile-nav-visible">
+        <Link to="/">
+          <Button classes="site-title">CarPost</Button>
+        </Link>
+        <div
+          className="menu"
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
       <ul className={menuOpen ? "open" : ""}>
         {authenticated ? ( //logged in view

@@ -5,7 +5,9 @@ nav {
   background-color: #ffffff;
   position: sticky;
   top: 0;
-  border: red 2px solid
+  z-index: 1000;
+  max-width: 100%;
+  width: 100%;
 }
 
 nav ul {
@@ -32,7 +34,7 @@ nav ul li button {
 
 nav .menu {
   display: none;
-  position: absolute;
+
   top: 0.75rem;
   right: 0.5rem;
   flex-direction: column;
@@ -45,6 +47,44 @@ nav .menu {
 nav .menu span {
   height: 0.4rem;
   width: 100%;
-  background-color: #fff;
+  background-color: #ff7700;
   border-radius: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  nav .menu {
+    display: flex;
+  }
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+  nav ul.open {
+    display: flex;
+  }
+  nav ul li {
+    border-bottom: 1px solid #38409f;
+
+    width: 100%;
+    text-align: right;
+  }
+  nav ul li a {
+    margin: 0.2rem 0.5rem;
+  }
+  nav .underline-btn {
+    margin: auto;
+  }
+  .mobile-nav-visible {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
