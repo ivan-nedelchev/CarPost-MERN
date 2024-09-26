@@ -46,51 +46,100 @@ const CarSearch = ({ setCars }) => {
           is waiting for you.
         </h1>
         <div className="search-container">
-          <h2>Car search</h2>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="make">Make:</label>
-            <div className="dropdown">
-              <select
-                onChange={(e) => {
-                  setModels(modelsData[e.target.value]);
-                  handleInputChange(e);
-                }}
-                id="make"
-                name="make"
-                defaultValue=""
-              >
-                <option className="firstOption" value="">
-                  Any
-                </option>
-                {makesData.map((make) => (
-                  <option key={make} value={make}>
-                    {make}
+          <form onSubmit={handleSubmit} className="search-form">
+            <div className="search-option">
+              <label htmlFor="make">Make:</label>
+              <div className="dropdown">
+                <select
+                  onChange={(e) => {
+                    setModels(modelsData[e.target.value]);
+                    handleInputChange(e);
+                  }}
+                  id="make"
+                  name="make"
+                  defaultValue=""
+                >
+                  <option className="firstOption" value="">
+                    Any
                   </option>
-                ))}
-              </select>
-            </div>
-
-            <label htmlFor="model">Model:</label>
-            <div className="dropdown">
-              <select
-                onChange={(e) => {
-                  handleInputChange(e);
-                }}
-                id="model"
-                name="model"
-                defaultValue=""
-              >
-                <option className="firstOption" value="">
-                  Any
-                </option>
-                {models?.length > 0 &&
-                  models.map((model) => (
-                    <option key={model} value={model}>
-                      {model}
+                  {makesData.map((make) => (
+                    <option key={make} value={make}>
+                      {make}
                     </option>
                   ))}
-              </select>
+                </select>
+              </div>
             </div>
+            <div className="search-option">
+              <label htmlFor="model">Model:</label>
+              <div className="dropdown">
+                <select
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
+                  id="model"
+                  name="model"
+                  defaultValue=""
+                >
+                  <option className="firstOption" value="">
+                    Any
+                  </option>
+                  {models?.length > 0 &&
+                    models.map((model) => (
+                      <option key={model} value={model}>
+                        {model}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+            <div className="search-option">
+              <label htmlFor="model">Model:</label>
+              <div className="dropdown">
+                <select
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
+                  id="model"
+                  name="model"
+                  defaultValue=""
+                >
+                  <option className="firstOption" value="">
+                    Any
+                  </option>
+                  {models?.length > 0 &&
+                    models.map((model) => (
+                      <option key={model} value={model}>
+                        {model}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+            <div className="search-option">
+              <label htmlFor="model">Model:</label>
+              <div className="dropdown">
+                <select
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
+                  id="model"
+                  name="model"
+                  defaultValue=""
+                >
+                  <option className="firstOption" value="">
+                    Any
+                  </option>
+                  {models?.length > 0 &&
+                    models.map((model) => (
+                      <option key={model} value={model}>
+                        {model}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+            <div className="advanced orange-text">Advanced search</div>
             <Button type="submit">Search</Button>
           </form>
         </div>

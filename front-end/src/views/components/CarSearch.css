@@ -32,7 +32,27 @@
 .orange-text {
   color: #ff7a00;
 }
-
+.search-container {
+  background: rgba(255, 255, 255, 0.87);
+  border-radius: 1rem;
+  padding: 1.5em 1em;
+}
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2em 1em;
+  grid-template-areas:
+    ". . ."
+    ". advanced .";
+}
+.advanced {
+  align-self: end;
+  grid-area: advanced;
+}
+.search-form select {
+  width: 100%;
+}
 @media (max-width: 768px) {
   .picture-container {
     max-width: 79%;
