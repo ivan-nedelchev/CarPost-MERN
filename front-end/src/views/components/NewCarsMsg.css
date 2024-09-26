@@ -1,12 +1,45 @@
 .cars-msg {
   text-align: center;
-  color: red;
+  color: rgb(84, 84, 84);
   height: 30vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1.2fr 0.3fr 1fr;
+  gap: 20px 20px;
+  grid-template-areas:
+    "."
+    "newCar-title"
+    "bounce-arrow"
+    ".";
+  justify-items: center;
+  align-items: center;
 }
-.cars-msg h3 {
-  margin: 0;
+.newCar-title {
+  grid-area: newCar-title;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+.bounce-arrow {
+  grid-area: bounce-arrow;
+  max-width: 5vh;
+  position: relative;
+  animation: bounce 6s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-20%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
