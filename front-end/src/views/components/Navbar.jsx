@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import Button from "./Button";
 import "./Navbar.css";
@@ -7,8 +7,6 @@ import "./Navbar.css";
 const Navbar = () => {
   const { authenticated, logout } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
-
   async function handleLogout() {
     await logout();
   }
@@ -19,7 +17,7 @@ const Navbar = () => {
         <Link to="/">
           <Button classes="site-title">CarPost</Button>
         </Link>
-        <div
+        <div //menu for mobile view
           className="menu"
           onClick={() => {
             setMenuOpen(!menuOpen);
@@ -30,8 +28,11 @@ const Navbar = () => {
           <span></span>
         </div>
       </div>
-      <ul className={menuOpen ? "open" : ""}>
-        {authenticated ? ( //logged in view
+      <ul
+        className={menuOpen ? "open" : ""}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {authenticated ? ( //logged in nav buttons
           <>
             <li>
               <NavLink to="/my-posts">
@@ -60,7 +61,7 @@ const Navbar = () => {
             </li>
           </>
         ) : (
-          //no user view
+          //Not logged in buttons
           <>
             <li>
               <NavLink to="/login">
