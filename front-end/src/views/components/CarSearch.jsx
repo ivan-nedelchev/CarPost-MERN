@@ -94,7 +94,7 @@ const CarSearch = ({ setCars }) => {
               </div>
             </div>
             <div className="search-option">
-              <label htmlFor="model">Model:</label>
+              <label htmlFor="model">Year from:</label>
               <div className="dropdown">
                 <select
                   onChange={(e) => {
@@ -117,7 +117,7 @@ const CarSearch = ({ setCars }) => {
               </div>
             </div>
             <div className="search-option">
-              <label htmlFor="model">Model:</label>
+              <label htmlFor="model">Price up to:</label>
               <div className="dropdown">
                 <select
                   onChange={(e) => {
@@ -139,7 +139,7 @@ const CarSearch = ({ setCars }) => {
                 </select>
               </div>
             </div>
-            <div className="advanced orange-text">Advanced search</div>
+            <div className="advanced underline">Advanced search</div>
             <Button type="submit">Search</Button>
           </form>
         </div>
