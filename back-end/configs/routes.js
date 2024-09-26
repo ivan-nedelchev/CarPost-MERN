@@ -1,3 +1,4 @@
+import express from "express";
 import {
   registerController,
   loginController,
@@ -13,7 +14,7 @@ import {
 // import { checkSession } from "../utils/checkLogin.js";
 
 export default (app) => {
-  // app.use(checkSession);
+  app.use(express.static("static"));
   app.post("/register", registerController);
   app.post("/login", loginController);
   app.get("/logout", logoutController);
