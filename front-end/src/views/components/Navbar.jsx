@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import Button from "./Button";
 import "./Navbar.css";
@@ -7,8 +7,11 @@ import "./Navbar.css";
 const Navbar = () => {
   const { authenticated, logout } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
-  async function handleLogout() {
+  const navigate = useNavigate();
+  async function handleLogout(e) {
+    e.preventDefault();
     await logout();
+    navigate("/");
   }
 
   return (
@@ -54,7 +57,10 @@ const Navbar = () => {
             </li>
             <li>
               <a href="">
-                <Button onClick={() => handleLogout()} classes="underline-btn">
+                <Button
+                  onClick={(e) => handleLogout(e)}
+                  classes="underline-btn"
+                >
                   Logout
                 </Button>
               </a>
