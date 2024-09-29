@@ -2,11 +2,13 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { makesData, modelsData } from "../../utils/carData";
 import { fetchCars } from "../../utils/cars";
+import { useNavigate } from "react-router-dom";
 import "./CarSearch.css";
 import Button from "./Button";
 const CarSearch = ({ setCars }) => {
   const [models, setModels] = useState([]);
   const [searchData, setSearchData] = useState({});
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name == "make") {
@@ -45,7 +47,7 @@ const CarSearch = ({ setCars }) => {
           <span className="orange-text"> dream car </span>
           is waiting for you.
         </h1>
-        <div className="search-container">
+        <div className="search-container-mini">
           <form onSubmit={handleSubmit} className="search-form">
             <div className="search-option">
               <label htmlFor="make">Make:</label>
@@ -139,7 +141,12 @@ const CarSearch = ({ setCars }) => {
                 </select>
               </div>
             </div>
-            <div className="advanced underline">Advanced search</div>
+            <div
+              className="advanced underline"
+              onClick={() => navigate("/search")}
+            >
+              Advanced search
+            </div>
             <Button type="submit">Search</Button>
           </form>
         </div>

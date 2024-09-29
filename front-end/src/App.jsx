@@ -9,6 +9,7 @@ import CreateCar from "./views/CreateCar";
 import Details from "./views/Details";
 import MyPosts from "./views/MyPosts";
 import "./App.css";
+import SearchAdvanced from "./views/SearchAdvanced";
 function App() {
   const { authenticated } = useContext(AuthContext);
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/details/:carId" element={<Details />} />
+          <Route path="/search" element={<SearchAdvanced />} />
           {authenticated && <Route path="/my-posts" element={<MyPosts />} />}
         </Routes>
       </div>

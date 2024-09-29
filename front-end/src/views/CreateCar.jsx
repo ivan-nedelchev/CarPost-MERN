@@ -1,12 +1,34 @@
 import { useState } from "react";
-import "./CreateCar.css";
 import { post } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import { featuresData } from "../utils/carData.js";
+import "./CreateCar.css";
 const path = "/car/";
 const CreateCar = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
+  const [features, setFeatures] = useState({
+    safety: {},
+    comfort: {},
+    protection: {},
+    exterior: {},
+    interior: {},
+    others: {},
+  });
+  const handleFeatureChange = (e) => {
+    //handle car feature checking and unchecking
+    const { name, value, checked } = e.target;
+    const updatedFeatureCategory = { ...features[name] };
+    if (checked) {
+      updatedFeatureCategory[value] = true;
+    } else {
+      delete updatedFeatureCategory[value];
+    }
+    setFeatures({
+      ...features,
+      [name]: updatedFeatureCategory,
+    });
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -17,15 +39,7 @@ const CreateCar = () => {
 
   const createCar = async (ev) => {
     ev.preventDefault();
-    const selectedFeatures = {};
-    Object.keys(featuresData).forEach((category) => {
-      const checkboxes = document.querySelectorAll(
-        `input[name="${category}"]:checked`
-      );
-      selectedFeatures[category] = Array.from(checkboxes).map(
-        (checkbox) => checkbox.value
-      );
-    });
+    console.log(features);
 
     let carObject = await post(path, {
       make: formData.make,
@@ -42,7 +56,7 @@ const CreateCar = () => {
       description: formData.description,
       color: formData.color,
       location: formData.location,
-      features: selectedFeatures,
+      features: features,
       image: formData.image,
       price: Number(formData.price),
     });
@@ -54,7 +68,12 @@ const CreateCar = () => {
     <>
       <div className="carFormWrapper">
         <h1>Post a car</h1>
-        <form className="car-form" onSubmit={createCar} action="/create/car" method="post">
+        <form
+          className="car-form"
+          onSubmit={createCar}
+          action="/create/car"
+          method="post"
+        >
           <div className="form-group">
             <label htmlFor="make">Make:</label>
             <input
@@ -221,11 +240,12 @@ const CreateCar = () => {
               {featuresData[category].map((feature, index) => (
                 <div key={index} className="checkbox-group">
                   <input
-                  className="checkbox"
+                    className="checkbox"
                     type="checkbox"
                     id={`feature-${category}-${index}`}
                     name={category}
                     value={feature}
+                    onClick={handleFeatureChange}
                   />
                   <label htmlFor={`feature-${category}-${index}`}>
                     {feature}
