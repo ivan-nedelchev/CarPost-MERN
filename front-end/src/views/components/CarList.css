@@ -3,7 +3,7 @@ ul {
 }
 
 .cars {
-  background-color: rgba(34, 52, 152, 0.209);
+  background-color: rgba(34, 52, 152, 0.737);
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
