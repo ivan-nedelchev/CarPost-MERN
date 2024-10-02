@@ -15,6 +15,7 @@ const CarList = ({ cars }) => {
             </>
           )}
         </ul>
+        <div id="explore">Explore all 23,152 car posts</div>
       </div>
     </>
   );

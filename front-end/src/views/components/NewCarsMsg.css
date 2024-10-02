@@ -1,11 +1,11 @@
 .cars-msg {
   text-align: center;
   color: rgba(0, 0, 0, 0.713);
-  height: 30vh;
+  height: 25vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1.2fr 0.3fr 1fr;
-  gap: 20px 20px;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
   grid-template-areas:
     "."
     "newCar-title"

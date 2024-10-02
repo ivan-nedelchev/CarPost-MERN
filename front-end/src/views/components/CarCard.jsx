@@ -9,7 +9,7 @@ const CarCard = ({ car, index }) => {
     ev.preventDefault();
     navigate(path + id);
   }
-  const classes = index <= 1 ? "car card" : "hidden-car car card"; //hidden-car class for cars above 2 for responsiveness
+  const classes = index <= 1 ? "car-card" : "hidden-car car-card"; //hidden-car class for cars above 2 for responsiveness
 
   return (
     <>
@@ -18,16 +18,13 @@ const CarCard = ({ car, index }) => {
         key={car._id}
         onClick={(ev) => handleDetailsClick(ev, car._id)}
       >
-        <img className="carImage" src={car.image} alt="Avatar"></img>
+        <img className="carImage" src={car.image} alt="car image"></img>
         <div className="carInfo">
-          <h4 className="wide">
-            <b>{car.make + " " + car.model}</b>
-          </h4>
-          <div>{car.year}</div>
-          <div>{car.year}</div>
-          <div>{car.year}</div>
-          <div>{car.year}</div>
-          <p className="wide">{car.price} лв.</p>
+          <p id="card-name">{car.make + " " + car.model}</p>
+          <p>
+            {car.year}, {car.mileage} km
+          </p>
+          <p className="orange-text card-price">{car.price} лв.</p>
         </div>
       </li>
     </>

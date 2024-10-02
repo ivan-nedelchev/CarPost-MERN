@@ -1,18 +1,32 @@
 ul {
   list-style: none;
 }
-
+.newcars-container {
+  width: 70%;
+  background-color: #38419fcb;
+  padding-bottom: 1rem;
+  border-radius: 0.2rem;
+}
 .cars {
-  background-color: rgba(34, 52, 152, 0.737);
-  border-radius: 10px;
   display: grid;
+  border-radius: 1rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-template-areas: ". . . .";
   padding-top: 2rem;
-  max-width: 100%;
+  padding-bottom: 2rem;
+  width: 90%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin: auto;
 }
-
+#explore {
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+}
 @media (max-width: 1536px) {
   .cars {
     max-width: 80%;

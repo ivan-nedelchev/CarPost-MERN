@@ -40,7 +40,7 @@ const CarSearch = ({ setCars }) => {
     setCars([...carsArray]);
   };
   return (
-    <div className="picture-container container">
+    <div className="picture-container">
       <div className="search-section">
         <h1 className="home-message">
           Your
