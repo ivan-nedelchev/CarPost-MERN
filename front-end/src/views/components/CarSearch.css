@@ -16,11 +16,21 @@
   border-radius: 0.5em;
 }
 
+.orange-text {
+  color: #ff7a00;
+}
+
 .home-message {
-  position: relative;
   color: white;
+}
+
+.home-message,
+.home-message span {
+  position: relative;
   text-align: center;
   padding-bottom: 2rem;
+  font-weight: 800;
+  font-size: 3rem;
 }
 .search-section {
   margin: 6% 10% 10%;
@@ -28,9 +38,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: start;
-}
-.orange-text {
-  color: #ff7a00;
 }
 .underline {
   text-decoration: underline;
@@ -65,9 +72,6 @@
   color: #828282;
 }
 @media (max-width: 768px) {
-  .picture-container {
-    max-width: 79%;
-  }
   .home-message {
     font-size: 1.5rem;
   }

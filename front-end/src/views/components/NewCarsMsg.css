@@ -17,7 +17,8 @@
 .newCar-title {
   grid-area: newCar-title;
   position: relative;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 500;
 }
 .bounce-arrow {
   grid-area: bounce-arrow;

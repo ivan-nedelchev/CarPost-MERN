@@ -8,6 +8,7 @@ import Register from "./views/Register";
 import CreateCar from "./views/CreateCar";
 import Details from "./views/Details";
 import MyPosts from "./views/MyPosts";
+import Footer from "./views/components/Footer";
 import "./App.css";
 import SearchAdvanced from "./views/SearchAdvanced";
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/search" element={<SearchAdvanced />} />
           {authenticated && <Route path="/my-posts" element={<MyPosts />} />}
         </Routes>
+        <Footer></Footer>
       </div>
     </>
   );
