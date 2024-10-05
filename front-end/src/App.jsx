@@ -1,6 +1,7 @@
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
+import { UserProgressContextProvider } from "./context/UserProgressContext";
 import Navbar from "./views/components/Navbar";
 import Home from "./views/Home";
 import Login from "./views/Login";
@@ -16,17 +17,22 @@ function App() {
   return (
     <>
       <div className="App">
-        <Navbar />
+        <UserProgressContextProvider>
+          <Navbar />
+          <Login />
+          <Register />
+        </UserProgressContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create/car" element={<CreateCar />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/register" element={<Register />} /> */}
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/details/:carId" element={<Details />} />
           <Route path="/search" element={<SearchAdvanced />} />
           {authenticated && <Route path="/my-posts" element={<MyPosts />} />}
         </Routes>
-        <Footer></Footer>
+
+        <Footer />
       </div>
     </>
   );

@@ -96,14 +96,14 @@ const CarSearch = ({ setCars }) => {
               </div>
             </div>
             <div className="search-option">
-              <label htmlFor="model">Year from:</label>
+              <label htmlFor="yearFrom">Year from:</label>
               <div className="dropdown">
                 <select
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  id="model"
-                  name="model"
+                  id="yearFrom"
+                  name="yearFrom"
                   defaultValue=""
                 >
                   <option className="firstOption" value="">

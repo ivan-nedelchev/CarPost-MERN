@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { UserProgressContext } from "../../context/UserProgressContext";
 import Button from "./Button";
 import "./Navbar.css";
 
 const Navbar = () => {
   const { authenticated, logout } = useContext(AuthContext);
+  const userProgressCtx = useContext(UserProgressContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   async function handleLogout(e) {
@@ -70,22 +72,20 @@ const Navbar = () => {
           //Not logged in buttons
           <>
             <li>
-              <NavLink to="/login">
-                {({ isActive }) => (
-                  <Button classes={`underline-btn ${isActive ? "active" : ""}`}>
-                    Login
-                  </Button>
-                )}
-              </NavLink>
+              <Button
+                onClick={userProgressCtx.showLogin}
+                classes={`underline-btn`}
+              >
+                Login
+              </Button>
             </li>
             <li>
-              <NavLink to="/register">
-                {({ isActive }) => (
-                  <Button classes={`underline-btn ${isActive ? "active" : ""}`}>
-                    Register
-                  </Button>
-                )}
-              </NavLink>
+              <Button
+                onClick={userProgressCtx.showRegister}
+                classes={`underline-btn`}
+              >
+                Register
+              </Button>
             </li>
           </>
         )}

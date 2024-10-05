@@ -13,11 +13,7 @@ const CarCard = ({ car, index }) => {
 
   return (
     <>
-      <li
-        className={classes}
-        key={car._id}
-        onClick={(ev) => handleDetailsClick(ev, car._id)}
-      >
+      <li className={classes} onClick={(ev) => handleDetailsClick(ev, car._id)}>
         <img className="carImage" src={car.image} alt="car image"></img>
         <div className="carInfo">
           <p id="card-name">{car.make + " " + car.model}</p>
@@ -29,9 +25,6 @@ const CarCard = ({ car, index }) => {
       </li>
     </>
   );
-};
-CarCard.propTypes = {
-  car: PropTypes.object.isRequired,
 };
 
 export default CarCard;
