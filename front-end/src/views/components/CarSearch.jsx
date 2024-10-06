@@ -1,25 +1,26 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SearchContext } from "../../context/SearchContext";
 import { makesData, modelsData } from "../../utils/carData";
-import { fetchCars } from "../../utils/cars";
 import { useNavigate } from "react-router-dom";
 import "./CarSearch.css";
 import Button from "./Button";
 const CarSearch = ({ setCars }) => {
   const [models, setModels] = useState([]);
-  const [searchData, setSearchData] = useState({});
+  const [localSearch, setLocalSearch] = useState({});
+  const { updateSearch } = useContext(SearchContext);
   const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name == "make") {
-      setSearchData({
-        ...searchData,
+      setLocalSearch({
+        ...localSearch,
         [name]: value,
         model: "",
       });
     } else {
-      setSearchData({
-        ...searchData,
+      setLocalSearch({
+        ...localSearch,
         [name]: value,
       });
     }
@@ -27,17 +28,9 @@ const CarSearch = ({ setCars }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let searchParams = Object.assign({}, searchData);
-    for (const searchParam in searchData) {
-      // validate params
-      if (searchData[searchParam] == "") {
-        delete searchParams[searchParam];
-      }
-    }
-
-    const carsArray = await fetchCars(searchParams);
-    console.log(carsArray);
-    setCars([...carsArray]);
+    updateSearch(localSearch);
+    const queryParams = new URLSearchParams(localSearch).toString();
+    navigate(`/results?${queryParams}`);
   };
   return (
     <div className="picture-container">
@@ -119,14 +112,14 @@ const CarSearch = ({ setCars }) => {
               </div>
             </div>
             <div className="search-option">
-              <label htmlFor="model">Price up to:</label>
+              <label htmlFor="priceTo">Price up to:</label>
               <div className="dropdown">
                 <select
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  id="model"
-                  name="model"
+                  id="priceTo"
+                  name="priceTo"
                   defaultValue=""
                 >
                   <option className="firstOption" value="">

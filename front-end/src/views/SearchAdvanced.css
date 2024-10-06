@@ -17,6 +17,9 @@
   grid-template-rows: 1fr 1fr 1fr 1fr;
   gap: 1em 2em;
 }
+.feature-label {
+  cursor: pointer;
+}
 .search-form-detailed select {
   width: 100%;
   height: 2.5em;

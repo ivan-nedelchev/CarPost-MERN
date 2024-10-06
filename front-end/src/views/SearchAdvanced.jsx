@@ -1,6 +1,7 @@
 //TODO: Save search criteria in redux state and only reset it after leaving search/results page
-
-import React from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../context/SearchContext.jsx";
 import {
   makesData,
   modelsData,
@@ -10,32 +11,26 @@ import {
   colorData,
   bodyData,
 } from "../utils/carData.js";
-import { useState } from "react";
 import Button from "./components/Button.jsx";
 import "./SearchAdvanced.css";
 
 const SearchAdvanced = () => {
-  const [searchData, setSearchData] = useState({}); //Upgrade this later by using redux state to sync previously set criteria from the home page
-  const [features, setFeatures] = useState({
-    safety: {},
-    comfort: {},
-    protection: {},
-    exterior: {},
-    interior: {},
-    others: {},
-  });
+  const [localSearchData, setLocalSearchData] = useState({}); //Upgrade this later by using redux state to sync previously set criteria from the home page
+  const [features, setFeatures] = useState([]);
   const [models, setModels] = useState([]);
+  const { updateSearch } = useContext(SearchContext);
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name == "make") {
-      setSearchData({
-        ...searchData,
+      setLocalSearchData({
+        ...localSearchData,
         [name]: value,
         model: "",
       });
     } else {
-      setSearchData({
-        ...searchData,
+      setLocalSearchData({
+        ...localSearchData,
         [name]: value,
       });
     }
@@ -43,21 +38,36 @@ const SearchAdvanced = () => {
   const handleFeatureChange = (e) => {
     //handle car feature checking and unchecking
     const { name, value, checked } = e.target;
-    const updatedFeatureCategory = { ...features[name] };
     if (checked) {
-      updatedFeatureCategory[value] = true;
+      setFeatures((features) => [...features, value]);
     } else {
-      delete updatedFeatureCategory[value];
+      setFeatures((features) =>
+        features.filter((feature) => feature !== value)
+      );
     }
-    setFeatures({
-      ...features,
-      [name]: updatedFeatureCategory,
-    });
+    console.log(features);
+
+    // const updatedFeatureCategory = { ...features[name] };
+    // if (checked) {
+    //   updatedFeatureCategory[value] = true;
+    // } else {
+    //   delete updatedFeatureCategory[value];
+    // }
+    // setFeatures({
+    //   ...features,
+    //   [name]: updatedFeatureCategory,
+    // });
   };
   const handleSubmit = (ev) => {
-    //TO DO
     ev.preventDefault();
+    const searchData = {
+      ...localSearchData,
+      features,
+    };
     console.log(searchData);
+    updateSearch(searchData);
+    const queryParams = new URLSearchParams(searchData).toString();
+    navigate(`/results?${queryParams}`);
   };
   return (
     <div className="container search-container">
@@ -274,14 +284,18 @@ const SearchAdvanced = () => {
               </label>
               {featuresData[category].map((feature, index) => (
                 <div key={index}>
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    id={`feature-${category}-${index}`}
-                    name={category}
-                    value={feature}
-                  />
-                  <label htmlFor={`feature-${category}-${index}`}>
+                  <label
+                    className="feature-label"
+                    htmlFor={`feature-${category}-${index}`}
+                  >
+                    <input
+                      onClick={handleFeatureChange}
+                      className="checkbox"
+                      type="checkbox"
+                      id={`feature-${category}-${index}`}
+                      name={category}
+                      value={feature}
+                    />
                     {feature}
                   </label>
                 </div>
