@@ -19,13 +19,9 @@ export const SearchContextProvider = ({ children }) => {
   });
 
   const updateSearch = (newCriteria) => {
-    console.log(newCriteria);
-
-    setSearchCriteria((prevCriteria) => ({
-      ...prevCriteria,
+    setSearchCriteria(() => ({
       ...newCriteria,
     }));
-    console.log(searchCriteria);
   };
 
   return (

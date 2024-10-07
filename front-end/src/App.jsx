@@ -11,9 +11,9 @@ import CreateCar from "./views/CreateCar";
 import Details from "./views/Details";
 import MyPosts from "./views/MyPosts";
 import Footer from "./views/components/Footer";
-import "./App.css";
 import SearchAdvanced from "./views/SearchAdvanced";
 import SearchResults from "./views/SearchResults";
+import "./App.css";
 function App() {
   const { authenticated } = useContext(AuthContext);
   return (
@@ -30,7 +30,7 @@ function App() {
             <Route path="/create/car" element={<CreateCar />} />
             <Route path="/details/:carId" element={<Details />} />
             <Route path="/search" element={<SearchAdvanced />} />
-            <Route path="/search-results" element={<SearchResults />} />
+            <Route path="/results" element={<SearchResults />} />
             {authenticated && <Route path="/my-posts" element={<MyPosts />} />}
           </Routes>
         </SearchContextProvider>
