@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import CarCard from "./CarCard";
 import "./CarList.css";
 
 const CarList = ({ cars }) => {
+  const navigate = useNavigate()
   return (
     <>
       <div className="newcars-container container">
@@ -17,7 +19,7 @@ const CarList = ({ cars }) => {
             </>
           )}
         </ul>
-        <div id="explore">Explore all 23,152 car posts</div>
+        <div id="explore" onClick={() => navigate("/search-results")}>Explore all 23,152 car posts</div>
       </div>
     </>
   );

@@ -26,7 +26,7 @@ const SearchAdvanced = () => {
       setLocalSearchData({
         ...localSearchData,
         [name]: value,
-        model: "",
+        // model: "",
       });
     } else {
       setLocalSearchData({

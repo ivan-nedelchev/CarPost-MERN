@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import { useEffect, useRef } from "react";
 import "./Modal.css";

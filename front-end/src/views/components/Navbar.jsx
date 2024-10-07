@@ -17,80 +17,84 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="container">
-      <div className="mobile-nav-visible">
-        <Link to="/">
-          <Button classes="site-title">CarPost</Button>
-        </Link>
-        <div //menu for mobile view
-          className="menu"
-          onClick={() => {
-            setMenuOpen(!menuOpen);
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+    <div className="container">
+
+
+      <nav>
+        <div className="mobile-nav-visible">
+          <Link to="/">
+            <Button classes="site-title">CarPost</Button>
+          </Link>
+          <div //menu for mobile view
+            className="menu"
+            onClick={() => {
+              setMenuOpen(!menuOpen);
+            }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-      </div>
-      <ul
-        className={menuOpen ? "open" : ""}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {authenticated ? ( //logged in nav buttons
-          <>
-            <li>
-              <NavLink to="/my-posts">
-                {({ isActive }) => (
-                  <Button classes={`underline-btn ${isActive ? "active" : ""}`}>
-                    My Posts
+        <ul
+          className={menuOpen ? "open" : ""}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {authenticated ? ( //logged in nav buttons
+            <>
+              <li>
+                <NavLink to="/my-posts">
+                  {({ isActive }) => (
+                    <Button classes={`underline-btn ${isActive ? "active" : ""}`}>
+                      My Posts
+                    </Button>
+                  )}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/create/car">
+                  {({ isActive }) => (
+                    <Button classes={`underline-btn ${isActive ? "active" : ""}`}>
+                      Add Listing
+                    </Button>
+                  )}
+                </NavLink>
+              </li>
+              <li>
+                <a href="">
+                  <Button
+                    onClick={(e) => handleLogout(e)}
+                    classes="underline-btn"
+                  >
+                    Logout
                   </Button>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/create/car">
-                {({ isActive }) => (
-                  <Button classes={`underline-btn ${isActive ? "active" : ""}`}>
-                    Add Listing
-                  </Button>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <a href="">
+                </a>
+              </li>
+            </>
+          ) : (
+            //Not logged in buttons
+            <>
+              <li>
                 <Button
-                  onClick={(e) => handleLogout(e)}
-                  classes="underline-btn"
+                  onClick={userProgressCtx.showLogin}
+                  classes={`underline-btn`}
                 >
-                  Logout
+                  Login
                 </Button>
-              </a>
-            </li>
-          </>
-        ) : (
-          //Not logged in buttons
-          <>
-            <li>
-              <Button
-                onClick={userProgressCtx.showLogin}
-                classes={`underline-btn`}
-              >
-                Login
-              </Button>
-            </li>
-            <li>
-              <Button
-                onClick={userProgressCtx.showRegister}
-                classes={`underline-btn`}
-              >
-                Register
-              </Button>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+              </li>
+              <li>
+                <Button
+                  onClick={userProgressCtx.showRegister}
+                  classes={`underline-btn`}
+                >
+                  Register
+                </Button>
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
+    </div>
   );
 };
 export default Navbar;

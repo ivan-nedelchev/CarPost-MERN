@@ -3,7 +3,7 @@ ul {
 }
 .newcars-container {
   width: 70%;
-  background-color: #38419fcb;
+  background-color: #6d74c1;
   padding-bottom: 1rem;
   border-radius: 0.2rem;
 }
@@ -15,7 +15,7 @@ ul {
   grid-template-areas: ". . . .";
   padding-top: 2rem;
   padding-bottom: 2rem;
-  width: 90%;
+  width: 100%;
   padding-left: 1%;
   padding-right: 1%;
   margin: auto;

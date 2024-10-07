@@ -9,6 +9,9 @@ const CarCard = ({ car, index }) => {
     ev.preventDefault();
     navigate(path + id);
   }
+  function formatNumberWithSpaces(number) {
+    return number.toLocaleString('en-US').replace(/,/g, ' ');
+}
   const classes = index <= 1 ? "car-card" : "hidden-car car-card"; //hidden-car class for cars above 2 for responsiveness
 
   return (
@@ -20,7 +23,7 @@ const CarCard = ({ car, index }) => {
           <p>
             {car.year}, {car.mileage} km
           </p>
-          <p className="orange-text card-price">{car.price} лв.</p>
+          <p className="orange-text card-price">{formatNumberWithSpaces(car.price)} лв.</p>
         </div>
       </li>
     </>

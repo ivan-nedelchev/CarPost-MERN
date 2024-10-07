@@ -3,8 +3,8 @@ import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import { makesData, modelsData } from "../../utils/carData";
 import { useNavigate } from "react-router-dom";
-import "./CarSearch.css";
 import Button from "./Button";
+import "./CarSearch.css";
 const CarSearch = ({ setCars }) => {
   const [models, setModels] = useState([]);
   const [localSearch, setLocalSearch] = useState({});
@@ -16,7 +16,7 @@ const CarSearch = ({ setCars }) => {
       setLocalSearch({
         ...localSearch,
         [name]: value,
-        model: "",
+        // model: "",
       });
     } else {
       setLocalSearch({
