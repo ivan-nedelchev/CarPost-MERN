@@ -60,9 +60,10 @@ const SearchAdvanced = () => {
   };
   const handleSubmit = (ev) => {
     ev.preventDefault();
+    console.log(typeof features);
     const searchData = {
       ...localSearchData,
-      features,
+      ...(features.length != 0 ? { features } : {}),
     };
     console.log(searchData);
     updateSearch(searchData);
@@ -122,14 +123,14 @@ const SearchAdvanced = () => {
             </div>
           </div>
           <div className="search-option">
-            <label htmlFor="bodyType">Body type:</label>
+            <label htmlFor="category">Body type:</label>
             <div className="dropdown">
               <select
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                id="bodyType"
-                name="bodyType"
+                id="category"
+                name="category"
                 defaultValue=""
               >
                 <option className="firstOption" value="">
@@ -180,14 +181,14 @@ const SearchAdvanced = () => {
             </div>
           </div>
           <div className="search-option">
-            <label htmlFor="priceMax">Price up to:</label>
+            <label htmlFor="maxPrice">Price up to:</label>
             <div className="dropdown">
               <select
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                id="priceMax"
-                name="priceMax"
+                id="maxPrice"
+                name="maxPrice"
                 defaultValue=""
               >
                 <option className="firstOption" value="">
@@ -198,14 +199,14 @@ const SearchAdvanced = () => {
             </div>
           </div>
           <div className="search-option">
-            <label htmlFor="fuelType">Fuel:</label>
+            <label htmlFor="fuel">Fuel:</label>
             <div className="dropdown">
               <select
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                id="fuelType"
-                name="fuelType"
+                id="fuel"
+                name="fuel"
                 defaultValue=""
               >
                 <option className="firstOption" value="">

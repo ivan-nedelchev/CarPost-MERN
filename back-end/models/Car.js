@@ -58,7 +58,7 @@ const carSchema = new Schema({
     required: true,
   },
   features: {
-    type: Object,
+    type: Array,
     required: true,
   },
   image: {

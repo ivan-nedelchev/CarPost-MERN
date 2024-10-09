@@ -24,3 +24,5 @@ export default (app) => {
   app.put("/car/:id", editCarController);
   app.delete("/car/:id", deleteCarController);
 };
+
+

@@ -12,13 +12,41 @@ export const createCarService = async (newCar, requesterId) => {
 };
 
 export const listCarsService = async (queryParams) => {
+
+  const {
+    make,
+    model,
+    fuel,
+    transmission,
+    category,
+    color,
+    location,
+    minPrice,
+    maxPrice,
+    minMileage,
+    maxMileage,
+    minYear,
+    maxYear,
+    features
+  } = req.query;
+
+
   let filterCriteria = { isDeleted: false };
   if (queryParams && Object.keys(queryParams).length != 0) {
+    if(queryParams.features) {
+      const wantedFeatures = queryParams.features.length !=0 ? queryParams.features.split(',') : [];
+      queryParams = {
+        ...queryParams,
+        features: { $all: wantedFeatures }
+      }
+    }
+
     filterCriteria = {
       ...filterCriteria,
       ...queryParams,
     };
   }
+  console.log(filterCriteria);
 
   const cars = await Car.find(filterCriteria);
   return cars;

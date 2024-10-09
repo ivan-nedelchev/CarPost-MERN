@@ -65,6 +65,7 @@ export const getCarController = async (req, res) => {
 
 export const getCarsController = async (req, res) => {
   const queryParams = req.query;
+  console.log(queryParams);
   const cars = await listCarsService(queryParams);
   res.json(cars);
 };

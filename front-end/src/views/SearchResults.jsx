@@ -23,9 +23,14 @@ const SearchResults = () => {
       powerTo: queryParams.get("powerTo") || "",
       transmission: queryParams.get("transmission") || "",
       color: queryParams.get("color") || "",
-      features: queryParams.get("features").split(",") || {},
+      features: queryParams.get("features") || "",
     };
+    if(newCriteria.features.length != 0) {
+      newCriteria.features = newCriteria.features.split(",")
+    }
+    
     updateSearch(newCriteria);
+    console.log(newCriteria);
   }, []);
 
   return (
@@ -34,8 +39,6 @@ const SearchResults = () => {
       <ul>
         {Object.entries(searchCriteria).map(([key, value]) => {
           if (value !== "" && typeof value !== "object") {
-            console.log(typeof key, value);
-
             return (
               <li key={key}>
                 {key}: {value}

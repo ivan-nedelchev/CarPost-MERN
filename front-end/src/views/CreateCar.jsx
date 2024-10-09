@@ -7,27 +7,17 @@ const path = "/car/";
 const CreateCar = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
-  const [features, setFeatures] = useState({
-    safety: {},
-    comfort: {},
-    protection: {},
-    exterior: {},
-    interior: {},
-    others: {},
-  });
+  const [features, setFeatures] = useState([]);
   const handleFeatureChange = (e) => {
     //handle car feature checking and unchecking
     const { name, value, checked } = e.target;
-    const updatedFeatureCategory = { ...features[name] };
+    let newFeatures = [...features]
     if (checked) {
-      updatedFeatureCategory[value] = true;
+      newFeatures.push(value)
     } else {
-      delete updatedFeatureCategory[value];
+      newFeatures = newFeatures.filter(feature => feature != value)
     }
-    setFeatures({
-      ...features,
-      [name]: updatedFeatureCategory,
-    });
+    setFeatures(newFeatures);
   };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -232,7 +222,7 @@ const CreateCar = () => {
             />
           </div>
 
-          {Object.keys(featuresData).map((category) => (
+          {Object.keys(featuresData).map((category) => (    ///TODO: Dont include category of feature?
             <div className="checkbox-groups" key={category}>
               <label>
                 {category.charAt(0).toUpperCase() + category.slice(1)}:
