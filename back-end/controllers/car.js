@@ -12,17 +12,17 @@ export const createCarController = async (req, res) => {
     const newCar = {
       make: req.body.make,
       model: req.body.model,
-      modification : req.body.modification,
-      fuel : req.body.fuel,
-      capacity : Number(req.body.capacity),
-      power : Number(req.body.power),
-      euroStandard : Number(req.body.euroStandard) ,
-      transmission : req.body.transmission,
-      category : req.body.category,
-      mileage : Number(req.body.mileage),
-      color : req.body.color,
-      location : req.body.location,
-      features : req.body.features,
+      modification: req.body.modification,
+      fuel: req.body.fuel,
+      capacity: Number(req.body.capacity),
+      power: Number(req.body.power),
+      euroStandard: Number(req.body.euroStandard),
+      transmission: req.body.transmission,
+      category: req.body.category,
+      mileage: Number(req.body.mileage),
+      color: req.body.color,
+      location: req.body.location,
+      features: req.body.features,
       year: Number(req.body.year),
       description: req.body.description,
       image: req.body.image,
@@ -42,7 +42,7 @@ export const createCarController = async (req, res) => {
   }
 };
 
-export const deleteCarController = async (req, res) => { 
+export const deleteCarController = async (req, res) => {
   let requesterId = JSON.parse(req.session.user).id;
   const carId = req.params.id;
   let car = await deleteCarService(carId, requesterId);
@@ -65,7 +65,7 @@ export const getCarController = async (req, res) => {
 
 export const getCarsController = async (req, res) => {
   const queryParams = req.query;
-  console.log(queryParams);
+
   const cars = await listCarsService(queryParams);
   res.json(cars);
 };

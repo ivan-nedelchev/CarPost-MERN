@@ -6,10 +6,12 @@ import NewCarsMsg from "./components/NewCarsMsg";
 import "./Home.css";
 const Home = () => {
   const [cars, setCars] = useState([]);
+  const carLimit = 4;
   useEffect(() => {
     const getCars = async () => {
-      const carsArray = await fetchCars();
+      const carsArray = await fetchCars({ limit: carLimit, make: "BMW" });
       setCars([...carsArray]);
+      console.log(carsArray);
     };
     getCars();
   }, []);

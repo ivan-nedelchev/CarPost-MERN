@@ -12,44 +12,71 @@ export const createCarService = async (newCar, requesterId) => {
 };
 
 export const listCarsService = async (queryParams) => {
+  console.log(queryParams);
 
-  const {
-    make,
-    model,
-    fuel,
-    transmission,
-    category,
-    color,
-    location,
-    minPrice,
-    maxPrice,
-    minMileage,
-    maxMileage,
-    minYear,
-    maxYear,
-    features
-  } = req.query;
-
-
+  const page = parseInt(queryParams.page) || 1;
+  const pageSize = parseInt(queryParams.limit) || 10;
   let filterCriteria = { isDeleted: false };
-  if (queryParams && Object.keys(queryParams).length != 0) {
-    if(queryParams.features) {
-      const wantedFeatures = queryParams.features.length !=0 ? queryParams.features.split(',') : [];
-      queryParams = {
-        ...queryParams,
-        features: { $all: wantedFeatures }
-      }
-    }
+  let wantedFeatures = [];
+  // Manually check each allowed query parameter
+  if (queryParams.make) wantedFeatures.push({ make: queryParams.make });
+  if (queryParams.model) wantedFeatures.push(queryParams.model);
+  console.log(wantedFeatures);
 
-    filterCriteria = {
-      ...filterCriteria,
-      ...queryParams,
-    };
-  }
-  console.log(filterCriteria);
+  // if (queryParams.fuel) wantedFeatures.fuel = queryParams.fuel;
+  // if (queryParams.transmission)
+  //   wantedFeatures.transmission = queryParams.transmission;
+  // if (queryParams.category) wantedFeatures.category = queryParams.category;
+  // if (queryParams.color) wantedFeatures.color = queryParams.color;
+  // if (queryParams.location) wantedFeatures.location = queryParams.location;
 
-  const cars = await Car.find(filterCriteria);
-  return cars;
+  // // Handle price range
+  // if (queryParams.minPrice || queryParams.maxPrice) {
+  //   wantedFeatures.price = {};
+  //   if (queryParams.minPrice)
+  //     wantedFeatures.price.$gte = parseFloat(queryParams.minPrice);
+  //   if (queryParams.maxPrice)
+  //     wantedFeatures.price.$lte = parseFloat(queryParams.maxPrice);
+  // }
+
+  // // Handle mileage range
+  // if (queryParams.minMileage || queryParams.maxMileage) {
+  //   wantedFeatures.mileage = {};
+  //   if (queryParams.minMileage)
+  //     wantedFeatures.mileage.$gte = parseFloat(queryParams.minMileage);
+  //   if (queryParams.maxMileage)
+  //     wantedFeatures.mileage.$lte = parseFloat(queryParams.maxMileage);
+  // }
+
+  // // Handle year range
+  // if (queryParams.minYear || queryParams.maxYear) {
+  //   wantedFeatures.year = {};
+  //   if (queryParams.minYear)
+  //     wantedFeatures.year.$gte = parseInt(queryParams.minYear);
+  //   if (queryParams.maxYear)
+  //     wantedFeatures.year.$lte = parseInt(queryParams.maxYear);
+  // }
+
+  // // if (queryParams && Object.keys(queryParams).length != 0) {
+  // //   if (queryParams.features) {
+  // //     const wantedFeatures =
+  // //       queryParams.features.length != 0 ? queryParams.features.split(",") : [];
+  // //     queryParams = {
+  // //       ...queryParams,
+  // //       features: { $all: wantedFeatures },
+  // //     };
+  // //   }
+  // // }
+  // if (Object.keys(wantedFeatures).length > 0) {
+  //   filterCriteria.features = { $all: wantedFeatures };
+  // }
+  // console.log(filterCriteria);
+
+  // const cars = await Car.find(filterCriteria)
+  //   .skip((page - 1) * pageSize)
+  //   .limit(pageSize);
+
+  // return cars;
 };
 
 export const getCarService = async (carId) => {
