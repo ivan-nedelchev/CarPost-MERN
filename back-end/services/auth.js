@@ -1,29 +1,38 @@
 import User from "../models/User.js";
-import { hashSync, compareSync, genSaltSync } from "bcrypt";
-const bcryptSalt = genSaltSync(10);
+import { hash, compare, genSalt } from "bcrypt";
 
 export const registerService = async (username, password) => {
-  const isUserExist = await User.findOne({ username });
-  const hashedPassword = hashSync(password, bcryptSalt);
-  if (!isUserExist) {
-    const user = new User({
-      username,
-      hashedPassword,
-    });
-    return await user.save();
-  } else {
-    return null;
+  try {
+    const isUserExist = await User.findOne({ username });
+    if (!isUserExist) {
+      const salt = await genSalt(10);
+      const hashedPassword = await hash(password, salt);
+      const user = new User({
+        username,
+        hashedPassword,
+      });
+      return await user.save();
+    } else {
+      return null; // User already exists
+    }
+  } catch (error) {
+    console.error("Error in registerService:", error);
+    throw new Error("Registration failed");
   }
 };
 
 export const loginService = async (username, password) => {
-  const user = await User.findOne({ username });
-  if (user) {
-    let comparedPassword = compareSync(password, user.hashedPassword);
-    if (comparedPassword) {
-      return user;
+  try {
+    const user = await User.findOne({ username });
+    if (user) {
+      const isPasswordValid = await compare(password, user.hashedPassword);
+      if (isPasswordValid) {
+        return user;
+      }
     }
-  } else {
-    return null;
+    return null; // Username or password is incorrect
+  } catch (error) {
+    console.error("Error in loginService:", error);
+    throw new Error("Login failed");
   }
 };

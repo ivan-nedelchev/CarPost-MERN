@@ -137,7 +137,7 @@ const SearchAdvanced = () => {
                   Any
                 </option>
                 {bodyData.map((body) => (
-                  <option key={body} value={body.toLowerCase()}>
+                  <option key={body} value={body}>
                     {body}
                   </option>
                 ))}
@@ -268,7 +268,7 @@ const SearchAdvanced = () => {
                   Any
                 </option>
                 {colorData.map((color) => (
-                  <option key={color} value={color.toLowerCase()}>
+                  <option key={color} value={color}>
                     {color}
                   </option>
                 ))}

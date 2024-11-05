@@ -1,10 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom"; // Import useLocation
 import { SearchContext } from "../context/SearchContext";
 import { fetchCars } from "../utils/cars";
+import CarList from "./components/CarList";
 
 const SearchResults = () => {
   const { searchCriteria, updateSearch } = useContext(SearchContext);
+  const [cars, setCars] = useState([]);
   const location = useLocation();
 
   // Parse query parameters from the URL
@@ -13,6 +15,7 @@ const SearchResults = () => {
     const newCriteria = {
       make: queryParams.get("make") || "",
       model: queryParams.get("model") || "",
+      category: queryParams.get("category") || "",
       bodyType: queryParams.get("bodyType") || "",
       yearFrom: queryParams.get("yearFrom") || "",
       yearTo: queryParams.get("yearTo") || "",
@@ -25,13 +28,19 @@ const SearchResults = () => {
       color: queryParams.get("color") || "",
       features: queryParams.get("features") || "",
     };
-    if(newCriteria.features.length != 0) {
-      newCriteria.features = newCriteria.features.split(",")
+    if (newCriteria.features.length != 0) {
+      newCriteria.features = newCriteria.features.split(",");
     }
-    
+
     updateSearch(newCriteria);
-    console.log(newCriteria);
-  }, []);
+    const getSearchResult = async () => {
+      const searchResult = await fetchCars(newCriteria);
+      setCars([...searchResult])
+    };
+    getSearchResult()
+  }, [location.search]);
+  console.log(cars);
+  
 
   return (
     <div>
@@ -53,6 +62,7 @@ const SearchResults = () => {
           }
         })}
       </ul>
+      <CarList cars={cars} orienation="vertical"/>
     </div>
   );
 };

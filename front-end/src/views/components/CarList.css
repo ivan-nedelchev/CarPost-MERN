@@ -10,15 +10,18 @@ ul {
 .cars {
   display: grid;
   border-radius: 1rem;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  grid-template-areas: ". . . .";
+  
   padding-top: 2rem;
   padding-bottom: 2rem;
   width: 100%;
   padding-left: 1%;
   padding-right: 1%;
   margin: auto;
+}
+.horizontal {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: ". . . .";
 }
 #explore {
   color: white;

@@ -37,35 +37,70 @@ export const createCarController = async (req, res) => {
     }
     res.json(createdCar);
   } catch (err) {
-    console.log(err.message);
-    res.sendStatus(204);
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to create car." });
   }
 };
 
 export const deleteCarController = async (req, res) => {
-  let requesterId = JSON.parse(req.session.user).id;
-  const carId = req.params.id;
-  let car = await deleteCarService(carId, requesterId);
-  res.json(car);
+  try {
+    let requesterId = JSON.parse(req.session.user).id;
+    const carId = req.params.id;
+    let car = await deleteCarService(carId, requesterId);
+
+    if (car == null) {
+      throw new Error("Car not found or unauthorized request.");
+    }
+    res.json(car);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to delete car." });
+  }
 };
 
 export const editCarController = async (req, res) => {
-  let requesterId = JSON.parse(req.session.user).id;
-  let updatedCarInfo = req.body.car;
-  const carId = req.params.id;
-  let car = await editCarService(carId, requesterId, updatedCarInfo);
-  res.json(car);
+  try {
+    let requesterId = JSON.parse(req.session.user).id;
+    let updatedCarInfo = req.body.car;
+    const carId = req.params.id;
+    let car = await editCarService(carId, requesterId, updatedCarInfo);
+
+    if (car == null) {
+      throw new Error("Car not found or unauthorized request.");
+    }
+    res.json(car);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to edit car." });
+  }
 };
 
 export const getCarController = async (req, res) => {
-  const carId = req.params.id;
-  let car = await getCarService(carId);
-  res.json(car);
+  try {
+    const carId = req.params.id;
+    let car = await getCarService(carId);
+
+    if (car == null) {
+      throw new Error("Car not found.");
+    }
+    res.json(car);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to get car." });
+  }
 };
 
 export const getCarsController = async (req, res) => {
-  const queryParams = req.query;
+  try {
+    const queryParams = req.query;
+    const cars = await listCarsService(queryParams);
 
-  const cars = await listCarsService(queryParams);
-  res.json(cars);
+    if (!cars || cars.length === 0) {
+      throw new Error("No cars found.");
+    }
+    res.json(cars);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to get cars." });
+  }
 };

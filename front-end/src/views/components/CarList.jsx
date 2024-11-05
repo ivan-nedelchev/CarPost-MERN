@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 import CarCard from "./CarCard";
 import "./CarList.css";
 
-const CarList = ({ cars }) => {
-  const navigate = useNavigate()
+const CarList = ({ cars, orientation }) => {
+  const navigate = useNavigate();
+  let carsClasses = "cars";
+  orientation == "vertical"
+    ? (carsClasses += " vertical")
+    : (carsClasses += " horizontal");
   return (
     <>
       <div className="newcars-container container">
-        <ul className="cars">
+        <ul className={carsClasses}>
           {cars.length > 0 ? (
             cars.map((car, index) => (
               <CarCard key={car._id} index={index} car={car} />
@@ -19,7 +23,9 @@ const CarList = ({ cars }) => {
             </>
           )}
         </ul>
-        <div id="explore" onClick={() => navigate("/search-results")}>Explore all 23,152 car posts</div>
+        <div id="explore" onClick={() => navigate("/results")}>
+          Explore all 23,152 car posts
+        </div>
       </div>
     </>
   );
