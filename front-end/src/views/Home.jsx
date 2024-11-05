@@ -9,7 +9,7 @@ const Home = () => {
   const carLimit = 4;
   useEffect(() => {
     const getCars = async () => {
-      const carsArray = await fetchCars({ limit: carLimit, make: "BMW" });
+      const carsArray = await fetchCars({ limit: carLimit});
       setCars([...carsArray]);
       console.log(carsArray);
     };
