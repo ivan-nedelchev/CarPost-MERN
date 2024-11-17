@@ -33,7 +33,7 @@ const Details = () => {
     <div>
       {car ? (
         <div className="car-card">
-          <img src={car.image} alt="Car Image"></img>
+          <img className="car-image" src={car.image} alt="Car Image"></img>
           <div className="car-details">
             <h2>{car.make + " " + car.model + " " + car.modification}</h2>
             <p className="description">{car.description}</p>
@@ -47,8 +47,13 @@ const Details = () => {
             </ul>
             {car.owner == userId && (
               <>
-                <button onClick={() => setModal(true)}>Edit</button>
-                <button onClick={(ev) => handleDelete(ev, car._id)}>
+                <button className="listing-btn" onClick={() => setModal(true)}>
+                  Edit
+                </button>
+                <button
+                  className="listing-btn"
+                  onClick={(ev) => handleDelete(ev, car._id)}
+                >
                   Delete
                 </button>
               </>

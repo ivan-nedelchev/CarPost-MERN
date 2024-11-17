@@ -10,7 +10,7 @@ ul {
 .cars {
   display: grid;
   border-radius: 1rem;
-  
+
   padding-top: 2rem;
   padding-bottom: 2rem;
   width: 100%;
@@ -22,6 +22,7 @@ ul {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-template-areas: ". . . .";
+  gap: 1em 1em;
 }
 #explore {
   color: white;
